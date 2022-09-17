@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\User;
+
 class DashboardController extends Controller
 {
     /**
@@ -13,6 +15,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
+
+        $user = new User();
+        $user->password = \Hash::make('Www24733$');
+        $user->email = 'fuzik.vlad@gmail.com';
+        $user->name = 'Tex';
+        $user->save();
 
         return view('dashboard.index');
 
