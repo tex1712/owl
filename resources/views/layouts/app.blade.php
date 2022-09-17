@@ -36,7 +36,7 @@
   <link href="{{ asset('/css/vendor.css') }}" rel="stylesheet" />
   <link href="{{ asset('/css/app.css') }}" rel="stylesheet" />
 
-  <title>Blackdash - Bootstrap5 Admin Template</title>
+  <title>@yield('title')</title>
 </head>
 
 <body>
@@ -113,7 +113,7 @@
   <script src="{{ asset('/theme/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
   <script src="{{ asset('/theme/plugins/select2/js/select2.min.js') }}"></script>
 
-  @if(Route::currentRouteName() == 'dashboard.index')
+  @if(Route::currentRouteName() == 'dashboard')
     <script src="{{ asset('/theme/js/index.js') }}"></script>
   @endif
   <!-- Main JS-->

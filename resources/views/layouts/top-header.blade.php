@@ -7,7 +7,7 @@
         <div class="position-absolute top-50 translate-middle-y search-icon ms-3">
           <i class="bi bi-search"></i>
         </div>
-        <input class="form-control" type="text" placeholder="Search for anything">
+        <input class="form-control" type="text" placeholder="Шукати будь-що">
         <div class="position-absolute top-50 translate-middle-y search-close-icon">
           <i class="bi bi-x-lg"></i>
         </div>
@@ -42,37 +42,37 @@
                   <div class="app-box mx-auto bg-dark text-white">
                     <i class="bi bi-basket3"></i>
                   </div>
-                  <div class="app-title">Orders</div>
+                  <div class="app-title">Лінк 01</div>
                 </div>
                 <div class="col text-center">
                   <div class="app-box mx-auto bg-dark text-white">
                     <i class="bi bi-people"></i>
                   </div>
-                  <div class="app-title">Teams</div>
+                  <div class="app-title">Лінк 02</div>
                 </div>
                 <div class="col text-center">
                   <div class="app-box mx-auto bg-dark text-white">
                     <i class="bi bi-check2-circle"></i>
                   </div>
-                  <div class="app-title">Tasks</div>
+                  <div class="app-title">Лінк 03</div>
                 </div>
                 <div class="col text-center">
                   <div class="app-box mx-auto bg-dark text-white">
                     <i class="bi bi-cast"></i>
                   </div>
-                  <div class="app-title">Media</div>
+                  <div class="app-title">Лінк 04</div>
                 </div>
                 <div class="col text-center">
                   <div class="app-box mx-auto bg-dark text-white">
                     <i class="bi bi-folder2-open"></i>
                   </div>
-                  <div class="app-title">Files</div>
+                  <div class="app-title">Лінк 05</div>
                 </div>
                 <div class="col text-center">
                   <div class="app-box mx-auto bg-dark text-white">
                     <i class="bi bi-exclamation-triangle"></i>
                   </div>
-                  <div class="app-title">Alerts</div>
+                  <div class="app-title">Лінк 06</div>
                 </div>
               </div>
             </div>
@@ -87,8 +87,8 @@
             <div class="dropdown-menu dropdown-menu-end">
               <a href="javascript:;">
                 <div class="msg-header">
-                  <p class="msg-header-title">Notifications</p>
-                  <p class="msg-header-clear ms-auto">Marks all as read</p>
+                  <p class="msg-header-title">Сповіщення</p>
+                  <p class="msg-header-clear ms-auto">Позначає все як прочитане</p>
                 </div>
               </a>
               <div class="header-notifications-list">
@@ -98,9 +98,8 @@
                       <i class="bi bi-basket2"></i>
                     </div>
                     <div class="flex-grow-1">
-                      <h6 class="msg-name">New Orders <span class="msg-time float-end">2 min
-                          ago</span></h6>
-                      <p class="msg-info">You have recived new orders</p>
+                      <h6 class="msg-name">Тип сповіщення 01 <span class="msg-time float-end">2 хв тому</span></h6>
+                      <p class="msg-info">Текст сповіщення</p>
                     </div>
                   </div>
                 </a>
@@ -110,9 +109,8 @@
                       <i class="bi bi-person"></i>
                     </div>
                     <div class="flex-grow-1">
-                      <h6 class="msg-name">New Customers<span class="msg-time float-end">14 Sec
-                          ago</span></h6>
-                      <p class="msg-info">5 new user registered</p>
+                      <h6 class="msg-name">Тип сповіщення 01<span class="msg-time float-end">14 сек тому</span></h6>
+                      <p class="msg-info">Текст сповіщення</p>
                     </div>
                   </div>
                 </a>
@@ -122,9 +120,8 @@
                       <i class="bi bi-file-earmark"></i>
                     </div>
                     <div class="flex-grow-1">
-                      <h6 class="msg-name">24 PDF File<span class="msg-time float-end">19 min
-                          ago</span></h6>
-                      <p class="msg-info">The pdf files generated</p>
+                      <h6 class="msg-name">Тип сповіщення 02<span class="msg-time float-end">19 хв тому</span></h6>
+                      <p class="msg-info">Текст сповіщення</p>
                     </div>
                   </div>
                 </a>
@@ -135,8 +132,8 @@
                       <i class="bi bi-check2-all"></i>
                     </div>
                     <div class="flex-grow-1">
-                      <h6 class="msg-name">New Product Approved <span class="msg-time float-end">2 hrs ago</span></h6>
-                      <p class="msg-info">Your new product has approved</p>
+                      <h6 class="msg-name">Тип сповіщення 03 <span class="msg-time float-end">2 год тому</span></h6>
+                      <p class="msg-info">Текст сповіщення</p>
                     </div>
                   </div>
                 </a>
@@ -146,9 +143,8 @@
                       <i class="bi bi-send"></i>
                     </div>
                     <div class="flex-grow-1">
-                      <h6 class="msg-name">Time Response <span class="msg-time float-end">28 min
-                          ago</span></h6>
-                      <p class="msg-info">5.1 min avarage time response</p>
+                      <h6 class="msg-name">Тип сповіщення 04 <span class="msg-time float-end">28 хв тому</span></h6>
+                      <p class="msg-info">Текст сповіщення</p>
                     </div>
                   </div>
                 </a>
@@ -158,9 +154,8 @@
                       <i class="bi bi-chat-dots"></i>
                     </div>
                     <div class="flex-grow-1">
-                      <h6 class="msg-name">New Comments <span class="msg-time float-end">4 hrs
-                          ago</span></h6>
-                      <p class="msg-info">New customer comments recived</p>
+                      <h6 class="msg-name">Тип сповіщення 05 <span class="msg-time float-end">4 год тому</span></h6>
+                      <p class="msg-info">Текст сповіщення</p>
                     </div>
                   </div>
                 </a>
@@ -170,9 +165,8 @@
                       <i class="bi bi-archive"></i>
                     </div>
                     <div class="flex-grow-1">
-                      <h6 class="msg-name">New 24 authors<span class="msg-time float-end">1 day
-                          ago</span></h6>
-                      <p class="msg-info">24 new authors joined last week</p>
+                      <h6 class="msg-name">Тип сповіщення 06<span class="msg-time float-end">1 днів тому</span></h6>
+                      <p class="msg-info">Текст сповіщення</p>
                     </div>
                   </div>
                 </a>
@@ -182,9 +176,8 @@
                       <i class="bi bi-camera-video"></i>
                     </div>
                     <div class="flex-grow-1">
-                      <h6 class="msg-name">Your item is shipped <span class="msg-time float-end">5 hrs
-                          ago</span></h6>
-                      <p class="msg-info">Successfully shipped your item</p>
+                      <h6 class="msg-name">Тип сповіщення 07 <span class="msg-time float-end">5 год тому</span></h6>
+                      <p class="msg-info">Текст сповіщення</p>
                     </div>
                   </div>
                 </a>
@@ -194,15 +187,14 @@
                       <i class="bi bi-bucket"></i>
                     </div>
                     <div class="flex-grow-1">
-                      <h6 class="msg-name">Defense Alerts <span class="msg-time float-end">2 weeks
-                          ago</span></h6>
-                      <p class="msg-info">45% less alerts last 4 weeks</p>
+                      <h6 class="msg-name">Тип сповіщення 08 <span class="msg-time float-end">2 тиж тому</span></h6>
+                      <p class="msg-info">Текст сповіщення</p>
                     </div>
                   </div>
                 </a>
               </div>
               <a href="javascript:;">
-                <div class="text-center msg-footer">View All Notifications</div>
+                <div class="text-center msg-footer">Дивитись всі сповіщення</div>
               </a>
             </div>
           </li>
@@ -218,8 +210,8 @@
                   <div class="d-flex flex-row align-items-center gap-2">
                     <img src="https://via.placeholder.com/110X110/212529/fff" alt="" class="rounded-circle" width="54" height="54">
                     <div class="">
-                      <h6 class="mb-0 dropdown-user-name">Jhon Deo</h6>
-                      <small class="mb-0 dropdown-user-designation text-secondary">UI Developer</small>
+                      <h6 class="mb-0 dropdown-user-name">{{ Auth::user()->name }}</h6>
+                      <small class="mb-0 dropdown-user-designation text-secondary">Агент</small>
                     </div>
                   </div>
                 </a>
@@ -233,7 +225,7 @@
                     <div class="">
                       <ion-icon name="person-outline"></ion-icon>
                     </div>
-                    <div class="ms-3"><span>Profile</span></div>
+                    <div class="ms-3"><span>Профіль</span></div>
                   </div>
                 </a>
               </li>
@@ -243,7 +235,7 @@
                     <div class="">
                       <ion-icon name="settings-outline"></ion-icon>
                     </div>
-                    <div class="ms-3"><span>Setting</span></div>
+                    <div class="ms-3"><span>Налаштування</span></div>
                   </div>
                 </a>
               </li>
@@ -253,27 +245,7 @@
                     <div class="">
                       <ion-icon name="speedometer-outline"></ion-icon>
                     </div>
-                    <div class="ms-3"><span>Dashboard</span></div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="javascript:;">
-                  <div class="d-flex align-items-center">
-                    <div class="">
-                      <ion-icon name="wallet-outline"></ion-icon>
-                    </div>
-                    <div class="ms-3"><span>Earnings</span></div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="javascript:;">
-                  <div class="d-flex align-items-center">
-                    <div class="">
-                      <ion-icon name="cloud-download-outline"></ion-icon>
-                    </div>
-                    <div class="ms-3"><span>Downloads</span></div>
+                    <div class="ms-3"><span>Зведення</span></div>
                   </div>
                 </a>
               </li>
@@ -281,12 +253,12 @@
                 <hr class="dropdown-divider">
               </li>
               <li>
-                <a class="dropdown-item" href="javascript:;">
+                <a class="dropdown-item" href="{{ route('logout') }}">
                   <div class="d-flex align-items-center">
                     <div class="">
                       <ion-icon name="log-out-outline"></ion-icon>
                     </div>
-                    <div class="ms-3"><span>Logout</span></div>
+                    <div class="ms-3"><span>Вихід</span></div>
                   </div>
                 </a>
               </li>

@@ -1,4 +1,5 @@
-<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+@if(Route::currentRouteName() != 'dashboard')
+  <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
     <div class="ps-3">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0 p-0 align-items-center">
@@ -16,3 +17,4 @@
       </div>
     </div>
   </div>
+@endif

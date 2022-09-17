@@ -16,7 +16,7 @@
        <div class="card">
          <div class="card-body">
            <div class="p-4 border rounded">
-              {{ Form::open(['route' => 'delta.store', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'row g-3 needs-validation test', 'novalidate' => true]) }}
+              {{ Form::open(['route' => 'delta.store', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'row g-3 needs-validation', 'novalidate' => true]) }}
                 <div class="col-md-4">
                   {{ Form::label('delta-location', 'Локація', ['class' => 'form-label']) }}
                   {{ Form::text('location', null, ['class' => 'form-control', 'id' => 'delta-location', 'placeholder' => 'Місто, область', 'required' => true]) }}
