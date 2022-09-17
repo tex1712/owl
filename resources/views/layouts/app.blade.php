@@ -119,6 +119,7 @@
   <!-- Main JS-->
   <script src="{{ asset('/theme/js/main.js') }}"></script>
 
+  
   {{-- APP JS --}}
   <script src="{{ asset('/js/app.js') }}"></script>
 
