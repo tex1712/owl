@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeltaController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -27,4 +28,5 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/delta', DeltaController::class);
+    Route::resource('/users', UserController::class);
 });

@@ -17,4 +17,6 @@ mix.js('resources/js/app.js', 'public/js')
     ])
     .combine([
         'node_modules/sweetalert2/dist/sweetalert2.min.css',
-    ], 'public/css/vendor.css');
+        'node_modules/@fortawesome/fontawesome-free/css/all.min.css',
+    ], 'public/css/vendor.css')
+    .copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts');

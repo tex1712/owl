@@ -2063,7 +2063,6 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_table_datatable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/table-datatable */ "./resources/js/components/table-datatable.js");
-/* harmony import */ var _components_table_datatable__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_components_table_datatable__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_form_select2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/form-select2 */ "./resources/js/components/form-select2.js");
 /* harmony import */ var _components_form_select2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_components_form_select2__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_form_validation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/form-validation */ "./resources/js/components/form-validation.js");
@@ -2331,183 +2330,209 @@ $(function () {
 /*!****************************************************!*\
   !*** ./resources/js/components/table-datatable.js ***!
   \****************************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _table_translate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./table-translate */ "./resources/js/components/table-translate.js");
 
 $(function () {
   "use strict";
 
   $(document).ready(function () {
+    // Delta Table
     var table = $('#delta-table').DataTable({
       lengthChange: true,
       buttons: ['copy', 'excel', 'pdf', 'print'],
-      language: {
-        "lengthMenu": "Показати _MENU_ записів",
-        "infoFiltered": "(відфільтровано з _MAX_ записів)",
-        "search": "Пошук:",
-        "paginate": {
-          "first": "Перша",
-          "previous": "Попередня",
-          "next": "Наступна",
-          "last": "Остання"
-        },
-        "aria": {
-          "sortAscending": ": активуйте, щоб сортувати колонку за зростанням",
-          "sortDescending": ": активуйте, щоб сортувати колонку за спаданням"
-        },
-        "autoFill": {
-          "cancel": "Відміна",
-          "fill": "Заповнити всі клітинки з <i>%d<\/i>",
-          "fillHorizontal": "Заповнити клітинки горизонтально",
-          "fillVertical": "Заповнити клітинки вертикально"
-        },
-        "buttons": {
-          "collection": "Список <span class=\"ui-button-icon-primary ui-icon ui-icon-triangle-1-s\"><\/span>",
-          "colvis": "Видимість колонки",
-          "colvisRestore": "Відновити видимість",
-          "copy": "Копіювати",
-          "copyKeys": "Нажміть ctrl або u2318 + C щоб копіювати інформацію з таблиці до вашого буферу обміну.<br \/><br \/>Щоб відмінити нажміть на це повідомлення або Esc",
-          "copySuccess": {
-            "1": "Скопійовано 1 рядок в буфер обміну",
-            "_": "Скопійовано %d рядків в буфер обміну"
-          },
-          "copyTitle": "Копіювати в буфер обміну",
-          "csv": "CSV",
-          "excel": "Excel",
-          "pageLength": {
-            "-1": "Показати усі рядки",
-            "_": "Показати %d рядки"
-          },
-          "pdf": "PDF",
-          "print": "Друкувати"
-        },
-        "emptyTable": "Ця таблиця не містить даних",
-        "info": "Показано від _START_ по _END_ з _TOTAL_ записів",
-        "infoEmpty": "Показано від 0 по 0 з 0 записів",
-        "infoThousands": ",",
-        "loadingRecords": "Завантаження",
-        "processing": "Опрацювання...",
-        "searchBuilder": {
-          "add": "Додати умову",
-          "button": {
-            "0": "Розширений пошук",
-            "_": "Розширений пошук (%d)"
-          },
-          "clearAll": "Очистити все",
-          "condition": "Умова",
-          "conditions": {
-            "date": {
-              "after": "Після",
-              "before": "До",
-              "between": "Між",
-              "empty": "Пусто",
-              "equals": "Дорівнює",
-              "not": "Не",
-              "notBetween": "Не між",
-              "notEmpty": "Не пусто"
-            },
-            "number": {
-              "between": "Між",
-              "empty": "Пусто",
-              "equals": "Дорівнює",
-              "gt": "Більше ніж",
-              "gte": "Більше або дорівнює",
-              "lt": "Менше ніж",
-              "lte": "Менше або дорівнює",
-              "not": "Не",
-              "notBetween": "Не між",
-              "notEmpty": "Не пусто"
-            },
-            "string": {
-              "contains": "Містить",
-              "empty": "Пусто",
-              "endsWith": "Закінчується з",
-              "equals": "Дорівнює",
-              "not": "Не",
-              "notEmpty": "Не пусто",
-              "startsWith": "Починається з"
-            }
-          },
-          "data": "Дата",
-          "deleteTitle": "Видалити правило фільтрування",
-          "leftTitle": "Відступні критерії",
-          "logicAnd": "I",
-          "logicOr": "Або",
-          "rightTitle": "Відступні критерії",
-          "title": {
-            "0": "Розширений пошук",
-            "_": "Розширений пошук (%d)"
-          },
-          "value": "Значення"
-        },
-        "searchPanes": {
-          "clearMessage": "Очистити все",
-          "collapse": {
-            "0": "Пошукові Панелі",
-            "_": "Пошукові Панелі (%d)"
-          },
-          "count": "{total}",
-          "countFiltered": "{shown} ({total})",
-          "emptyPanes": "Немає Пошукових Панелей",
-          "loadMessage": "Завантаження Пошукових Панелей",
-          "title": "Активній фільтри - %d"
-        },
-        "select": {
-          "cells": {
-            "1": "1 клітинку вибрано",
-            "_": "%d клітинок вибрано"
-          },
-          "columns": {
-            "1": "1 колонку вибрано",
-            "_": "%d колонок вибрано"
-          }
-        },
-        "thousands": ",",
-        "zeroRecords": "Не знайдено жодних записів",
-        "editor": {
-          "close": "Закрити",
-          "create": {
-            "button": "Cтворити нову",
-            "title": "Cтворити новий запис",
-            "submit": "Cтворити"
-          },
-          "edit": {
-            "button": "Редагувати",
-            "title": "Редагувати запис",
-            "submit": "Оновити"
-          },
-          "remove": {
-            "button": "Видалити",
-            "title": "Видалити",
-            "submit": "Видалити"
-          }
-        },
-        "datetime": {
-          "minutes": "Хвилина",
-          "months": {
-            "0": "Січень",
-            "1": "Лютий",
-            "10": "Листопад",
-            "11": "Грудень",
-            "2": "Березень",
-            "3": "Квітень",
-            "4": "Травень",
-            "5": "Червень",
-            "6": "Липень",
-            "7": "Серпень",
-            "8": "Вересень",
-            "9": "Жовтень"
-          },
-          "next": "Наступні",
-          "previous": "Попередні",
-          "seconds": "Секунда",
-          "unknown": "-",
-          "weekdays": ["Неділя", "Понеділок", "Вівторок", "Середа", "Четверг", "П'ятниця", "Субота"]
-        }
-      }
+      language: _table_translate__WEBPACK_IMPORTED_MODULE_0__.$translation_ua
     });
-    table.buttons().container().appendTo('#delta-table_wrapper .col-md-6:eq(0)');
+    table.buttons().container().appendTo('#delta-table_wrapper .col-md-6:eq(0)'); // Users Table
+
+    var table = $('#users-table').DataTable({
+      lengthChange: true,
+      language: _table_translate__WEBPACK_IMPORTED_MODULE_0__.$translation_ua
+    });
   });
 });
+
+/***/ }),
+
+/***/ "./resources/js/components/table-translate.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/table-translate.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "$translation_ua": () => (/* binding */ $translation_ua)
+/* harmony export */ });
+var $translation_ua = {
+  "lengthMenu": "Показати _MENU_ записів",
+  "infoFiltered": "(відфільтровано з _MAX_ записів)",
+  "search": "Пошук:",
+  "paginate": {
+    "first": "Перша",
+    "previous": "Попередня",
+    "next": "Наступна",
+    "last": "Остання"
+  },
+  "aria": {
+    "sortAscending": ": активуйте, щоб сортувати колонку за зростанням",
+    "sortDescending": ": активуйте, щоб сортувати колонку за спаданням"
+  },
+  "autoFill": {
+    "cancel": "Відміна",
+    "fill": "Заповнити всі клітинки з <i>%d<\/i>",
+    "fillHorizontal": "Заповнити клітинки горизонтально",
+    "fillVertical": "Заповнити клітинки вертикально"
+  },
+  "buttons": {
+    "collection": "Список <span class=\"ui-button-icon-primary ui-icon ui-icon-triangle-1-s\"><\/span>",
+    "colvis": "Видимість колонки",
+    "colvisRestore": "Відновити видимість",
+    "copy": "Копіювати",
+    "copyKeys": "Нажміть ctrl або u2318 + C щоб копіювати інформацію з таблиці до вашого буферу обміну.<br \/><br \/>Щоб відмінити нажміть на це повідомлення або Esc",
+    "copySuccess": {
+      "1": "Скопійовано 1 рядок в буфер обміну",
+      "_": "Скопійовано %d рядків в буфер обміну"
+    },
+    "copyTitle": "Копіювати в буфер обміну",
+    "csv": "CSV",
+    "excel": "Excel",
+    "pageLength": {
+      "-1": "Показати усі рядки",
+      "_": "Показати %d рядки"
+    },
+    "pdf": "PDF",
+    "print": "Друкувати"
+  },
+  "emptyTable": "Ця таблиця не містить даних",
+  "info": "Показано від _START_ по _END_ з _TOTAL_ записів",
+  "infoEmpty": "Показано від 0 по 0 з 0 записів",
+  "infoThousands": ",",
+  "loadingRecords": "Завантаження",
+  "processing": "Опрацювання...",
+  "searchBuilder": {
+    "add": "Додати умову",
+    "button": {
+      "0": "Розширений пошук",
+      "_": "Розширений пошук (%d)"
+    },
+    "clearAll": "Очистити все",
+    "condition": "Умова",
+    "conditions": {
+      "date": {
+        "after": "Після",
+        "before": "До",
+        "between": "Між",
+        "empty": "Пусто",
+        "equals": "Дорівнює",
+        "not": "Не",
+        "notBetween": "Не між",
+        "notEmpty": "Не пусто"
+      },
+      "number": {
+        "between": "Між",
+        "empty": "Пусто",
+        "equals": "Дорівнює",
+        "gt": "Більше ніж",
+        "gte": "Більше або дорівнює",
+        "lt": "Менше ніж",
+        "lte": "Менше або дорівнює",
+        "not": "Не",
+        "notBetween": "Не між",
+        "notEmpty": "Не пусто"
+      },
+      "string": {
+        "contains": "Містить",
+        "empty": "Пусто",
+        "endsWith": "Закінчується з",
+        "equals": "Дорівнює",
+        "not": "Не",
+        "notEmpty": "Не пусто",
+        "startsWith": "Починається з"
+      }
+    },
+    "data": "Дата",
+    "deleteTitle": "Видалити правило фільтрування",
+    "leftTitle": "Відступні критерії",
+    "logicAnd": "I",
+    "logicOr": "Або",
+    "rightTitle": "Відступні критерії",
+    "title": {
+      "0": "Розширений пошук",
+      "_": "Розширений пошук (%d)"
+    },
+    "value": "Значення"
+  },
+  "searchPanes": {
+    "clearMessage": "Очистити все",
+    "collapse": {
+      "0": "Пошукові Панелі",
+      "_": "Пошукові Панелі (%d)"
+    },
+    "count": "{total}",
+    "countFiltered": "{shown} ({total})",
+    "emptyPanes": "Немає Пошукових Панелей",
+    "loadMessage": "Завантаження Пошукових Панелей",
+    "title": "Активній фільтри - %d"
+  },
+  "select": {
+    "cells": {
+      "1": "1 клітинку вибрано",
+      "_": "%d клітинок вибрано"
+    },
+    "columns": {
+      "1": "1 колонку вибрано",
+      "_": "%d колонок вибрано"
+    }
+  },
+  "thousands": ",",
+  "zeroRecords": "Не знайдено жодних записів",
+  "editor": {
+    "close": "Закрити",
+    "create": {
+      "button": "Cтворити нову",
+      "title": "Cтворити новий запис",
+      "submit": "Cтворити"
+    },
+    "edit": {
+      "button": "Редагувати",
+      "title": "Редагувати запис",
+      "submit": "Оновити"
+    },
+    "remove": {
+      "button": "Видалити",
+      "title": "Видалити",
+      "submit": "Видалити"
+    }
+  },
+  "datetime": {
+    "minutes": "Хвилина",
+    "months": {
+      "0": "Січень",
+      "1": "Лютий",
+      "10": "Листопад",
+      "11": "Грудень",
+      "2": "Березень",
+      "3": "Квітень",
+      "4": "Травень",
+      "5": "Червень",
+      "6": "Липень",
+      "7": "Серпень",
+      "8": "Вересень",
+      "9": "Жовтень"
+    },
+    "next": "Наступні",
+    "previous": "Попередні",
+    "seconds": "Секунда",
+    "unknown": "-",
+    "weekdays": ["Неділя", "Понеділок", "Вівторок", "Середа", "Четверг", "П'ятниця", "Субота"]
+  }
+};
+
 
 /***/ }),
 

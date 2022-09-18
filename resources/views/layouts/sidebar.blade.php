@@ -13,7 +13,7 @@
     <!--navigation-->
     <ul class="metismenu" id="menu">
       <li>
-        <a href="/">
+        <a href="{{ route('dashboard') }}">
           <div class="parent-icon">
             <i class="bi bi-house-door"></i>
           </div>
@@ -39,6 +39,15 @@
             </a>
           </li>
         </ul>
+      </li>
+      <li class="menu-label">Налаштування</li>
+      <li>
+        <a href="{{ route('users.index') }}">
+          <div class="parent-icon">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="menu-title">Користувачі</div>
+        </a>
       </li>
 
     </ul>

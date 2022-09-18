@@ -10,67 +10,85 @@
 @section('controls')
     <a href="{{ route('delta.create') }}" class="me-2"><button type="button" class="btn btn-success px-3">+ Додати</button> </a>
     <a href="{{ route('delta.edit', $delta->id) }}" class="me-2"><button type="button" class="btn btn-warning px-3"><ion-icon name="pencil"></ion-icon> Редагувати</button> </a>
-    <button type="button" class="btn btn-danger px-3 delete-item" id="delta_{{ $delta->id }}"><ion-icon name="trash"></ion-icon> Видалити</button>
+    <a href="javascript:;" id="delta_{{ $delta->id }}" class="delete-item"><button type="button" class="btn btn-danger px-3"><ion-icon name="trash"></ion-icon> Видалити</button></a>
     {{ Form::open(['url' => route('delta.destroy', $delta->id), 'method' => 'DELETE', 'class' => 'delete-form', 'id' => 'delete_'.'delta_'.$delta->id ]) }}
     {{ Form::close() }}
 @stop
 
 @section('content')
     <div class="row">
-        <div class="col-12 col-lg-8">
-        <div class="card">
-            <div class="card-body">
-            <h4 class="mb-2">Опис</h4>
-                <p>{{ $delta->content }}</p>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="toolbox d-flex flex-row align-items-center gap-2">
+                        <div class="d-flex flex-wrap flex-grow-1 gap-1">
+                            <div class="d-flex align-items-center flex-nowrap">
+                                <p class="mb-0 text-nowrap">Агент: <span><b>Tex</b></span></p>
+                                <p class="mb-0 ms-3 text-nowrap">Офіцер: <span><b>Нік</b></span></p>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-wrap">
+                            <div class="d-flex align-items-center flex-nowrap">
+                                <p class="mb-0 text-nowrap"><span class="badge bg-danger">Не відпрацьовано</span></p>
+                                <p class="mb-0 ms-3 text-nowrap"><span class="badge bg-danger">Не в роботі</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="col-12 col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                <h4 class="mb-2">Опис</h4>
+                    <p>{{ $delta->content }}</p>
+                </div>
+            </div>
         </div>
         <div class="col-12 col-lg-4">
-        <div class="card radius-10">
-            <div class="card-body">
-                <h5 class="mb-3">Локація/дата</h5>
+            <div class="card radius-10">
+                <div class="card-body">
+                    <h5 class="mb-3">Локація/дата</h5>
 
-                <h6 class="mb-0">Напрямок:</h6>
-                <p class="mb-3"><ion-icon name="move" class="me-2"></ion-icon>{{ $delta->direction->title }}</p>
-                <h6 class="mb-0">Населений пункт:</h6>
-                <p class="mb-3"><ion-icon name="compass-sharp" class="me-2"></ion-icon>{{ $delta->location }}</p>
-                <h6 class="mb-0">Координати:</h6>
-                <ul class="mb-3 ps-0 list-group-flush">
-                    @foreach (json_decode($delta->coordinates) as $coordinates)
-                        <li class="ps-0 list-group-item"><ion-icon name="map" class="me-2"></ion-icon><a href class="copy-to-clipboard" data-bs-toggle="tooltip" data-bs-placement="top" title="Копіювати в буфер обміну">{{ $coordinates->long[0] }}</a> | <a href class="copy-to-clipboard" data-bs-toggle="tooltip" data-bs-placement="top" title="Копіювати в буфер обміну">{{ $coordinates->lang[0] }}</a> @if($coordinates->desk[0])<span>- {{ $coordinates->desk[0] }}</span> @endif </li>
-                    @endforeach
-                </ul>
-                <h6 class="mb-0">Дата:</h6>
-                <p class="mb-3"><ion-icon name="calendar" class="me-2"></ion-icon>{{ $delta->date }}</p>
-                <h6 class="mb-0">Час:</h6>
-                <p class="mb-3"><ion-icon name="timer" class="me-2"></ion-icon>{{ $delta->time }}</p>
+                    <h6 class="mb-0">Напрямок:</h6>
+                    <p class="mb-3"><ion-icon name="move" class="me-2"></ion-icon>{{ $delta->direction->title }}</p>
+                    <h6 class="mb-0">Населений пункт:</h6>
+                    <p class="mb-3"><ion-icon name="compass-sharp" class="me-2"></ion-icon>{{ $delta->location }}</p>
+                    <h6 class="mb-0">Координати:</h6>
+                    <ul class="mb-3 ps-0 list-group-flush">
+                        @foreach (json_decode($delta->coordinates) as $coordinates)
+                            <li class="ps-0 list-group-item"><ion-icon name="map" class="me-2"></ion-icon><a href class="copy-to-clipboard" data-bs-toggle="tooltip" data-bs-placement="top" title="Копіювати в буфер обміну">{{ $coordinates->long[0] }}</a> | <a href class="copy-to-clipboard" data-bs-toggle="tooltip" data-bs-placement="top" title="Копіювати в буфер обміну">{{ $coordinates->lang[0] }}</a> @if($coordinates->desk[0])<span>- {{ $coordinates->desk[0] }}</span> @endif </li>
+                        @endforeach
+                    </ul>
+                    <h6 class="mb-0">Дата:</h6>
+                    <p class="mb-3"><ion-icon name="calendar" class="me-2"></ion-icon>{{ $delta->date }}</p>
+                    <h6 class="mb-0">Час:</h6>
+                    <p class="mb-3"><ion-icon name="timer" class="me-2"></ion-icon>{{ $delta->time }}</p>
+                </div>
             </div>
-        </div>
 
-        <div class="card radius-10">
-            <div class="card-body">
-                <h5 class="mb-3">Деталі</h5>
-                <p>Чи присутні цивільні? <span class="float-end">@if($delta->civil) Так @else Ні @endif</span></p>
-                <hr/>
-                <p>Чи можливе коригування? <span class="float-end">@if($delta->correction) Так @else Ні @endif</span></p>
-                <hr/>
-                <p>Надійність: <span class="float-end">{{ strtoupper($delta->reliability) }}</span></p>
-                <hr/>
-                <p>Уточнення: <span class="float-end">
-                    @if($delta->specific == 'p')
-                    Можливе
-                    @elseif($delta->specific == 'i')
-                    Неможливе
-                    @elseif($delta->specific == 'd')
-                    Ускладнене
-                    @endif
-                </span></p>
-                <hr/>
-                <p>Джерело: <span class="float-end">{{ $delta->source->name }}</span></p>
+            <div class="card radius-10">
+                <div class="card-body">
+                    <h5 class="mb-3">Деталі</h5>
+                    <p>Чи присутні цивільні? <span class="float-end">@if($delta->civil) Так @else Ні @endif</span></p>
+                    <hr/>
+                    <p>Чи можливе коригування? <span class="float-end">@if($delta->correction) Так @else Ні @endif</span></p>
+                    <hr/>
+                    <p>Надійність: <span class="float-end">{{ strtoupper($delta->reliability) }}</span></p>
+                    <hr/>
+                    <p>Уточнення: <span class="float-end">
+                        @if($delta->specific == 'p')
+                        Можливе
+                        @elseif($delta->specific == 'i')
+                        Неможливе
+                        @elseif($delta->specific == 'd')
+                        Ускладнене
+                        @endif
+                    </span></p>
+                    <hr/>
+                    <p>Джерело: <span class="float-end">{{ $delta->source->name }}</span></p>
+                </div>
             </div>
-        </div>
-
-
         </div>
     </div><!--end row-->
 
