@@ -60,18 +60,26 @@
         <div class="col-12 col-lg-4">
             <div class="card radius-10">
                 <div class="card-body">
-                    <h5 class="mb-3">Локація/дата</h5>
+                    <h5 class="mb-3">Основні відомості</h5>
 
                     <h6 class="mb-0">Напрямок:</h6>
-                    <p class="mb-3"><ion-icon name="move" class="me-2"></ion-icon>{{ $delta->direction->title }}</p>
+                    <p class="mb-3"><i class="fa-sharp fa-solid fa-diamond-turn-right me-2"></i>{{ $delta->direction->title }}</p>
                     <h6 class="mb-0">Населений пункт:</h6>
                     <p class="mb-3"><ion-icon name="compass-sharp" class="me-2"></ion-icon>{{ $delta->location }}</p>
                     <h6 class="mb-0">Координати:</h6>
                     <ul class="mb-3 ps-0 list-group-flush">
                         @foreach (json_decode($delta->coordinates) as $coordinates)
-                            <li class="ps-0 list-group-item"><ion-icon name="map" class="me-2"></ion-icon><a href class="copy-to-clipboard" data-bs-toggle="tooltip" data-bs-placement="top" title="Копіювати в буфер обміну">{{ $coordinates->long[0] }}</a> | <a href class="copy-to-clipboard" data-bs-toggle="tooltip" data-bs-placement="top" title="Копіювати в буфер обміну">{{ $coordinates->lang[0] }}</a> @if($coordinates->desk[0])<span>- {{ $coordinates->desk[0] }}</span> @endif </li>
+                            <li class="ps-0 list-group-item"><i class="fa-solid fa-location-dot me-2"></i><a href class="copy-to-clipboard" data-bs-toggle="tooltip" data-bs-placement="top" title="Копіювати в буфер обміну">{{ $coordinates->long[0] }}</a> | <a href class="copy-to-clipboard" data-bs-toggle="tooltip" data-bs-placement="top" title="Копіювати в буфер обміну">{{ $coordinates->lang[0] }}</a> @if($coordinates->desk[0])<span>- {{ $coordinates->desk[0] }}</span> @endif </li>
                         @endforeach
                     </ul>
+                    @if(!$delta->tags->isEmpty())
+                        <h6 class="mb-0">Теги:</h6>
+                        <p class="mb-3"><i class="fa-solid fa-tags me-2"></i>
+                            @foreach ($delta->tags as $tag)
+                                <span>{{ $tag->name }}@if(!$loop->last), @endif</span>
+                            @endforeach
+                        </p>
+                    @endif
                     <h6 class="mb-0">Дата:</h6>
                     <p class="mb-3"><ion-icon name="calendar" class="me-2"></ion-icon>{{ $delta->date }}</p>
                     <h6 class="mb-0">Час:</h6>

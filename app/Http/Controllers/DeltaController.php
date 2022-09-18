@@ -39,9 +39,9 @@ class DeltaController extends Controller
     public function store(Request $request)
     {
         $delta = new Delta;
-        $delta->fill($request->except('coordinates'));
+        $delta->fill($request->except(['coordinates']));
         $delta->coordinates = json_encode($request->input('coordinates'));
-        $delta->user_id = 1;
+        $delta->user_id = \Auth::id();
         $delta->save();
 
         return redirect()->route('delta.show', $delta->id);
@@ -81,8 +81,9 @@ class DeltaController extends Controller
     public function update(Request $request, $id)
     {
         $delta = Delta::findOrFail($id);
-        $delta->fill($request->except('coordinates'));
+        $delta->fill($request->except(['coordinates', 'tags']));
         $delta->coordinates = json_encode($request->input('coordinates'));
+        $delta->syncTags($request->input('tags'));
         $delta->save();
 
         return redirect()->route('delta.show', $delta->id);
