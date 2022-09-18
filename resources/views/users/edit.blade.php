@@ -17,25 +17,25 @@
                 <h5 class="mb-3 text-uppercase">Заповніть дані</h5>
                 <div class="col-md-12">
                   {{ Form::label('user-name', 'Позивний', ['class' => 'form-label']) }}
-                  {{ Form::text('name', $user->name, ['class' => 'form-control', 'id' => 'user-name', 'placeholder' => 'Горинич', 'required' => true]) }}
+                  {{ Form::text('name', $user->name, ['class' => 'form-control', 'id' => 'user-name', 'placeholder' => 'Горинич', 'autocomplete' => 'off', 'required' => true]) }}
                   <div class="invalid-feedback">Вкажіть позивний.</div>
                   <div class="valid-feedback">Виглядає добре!</div>
                 </div>
                 <div class="col-md-12">
                     {{ Form::label('user-email', 'Електронна пошта', ['class' => 'form-label']) }}
-                    {{ Form::text('email', $user->email, ['class' => 'form-control', 'id' => 'user-email', 'placeholder' => 'example@gmail.com', 'required' => true]) }}
+                    {{ Form::text('email', $user->email, ['class' => 'form-control', 'id' => 'user-email', 'placeholder' => 'example@gmail.com', 'autocomplete' => 'off', 'required' => true]) }}
                     <div class="invalid-feedback">Вкажіть електронну пошту.</div>
                     <div class="valid-feedback">Виглядає добре!</div>
                 </div>
                 <div class="col-12">
                     {{ Form::label('password', 'Новий пароль', ['class' => 'form-label']) }}
-                    {{ Form::input('password', 'password', null, ['class' => 'form-control', 'id' => 'password', 'pattern' => '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}', 'required' => true]) }}
+                    {{ Form::input('password', 'password', null, ['class' => 'form-control', 'id' => 'password', 'pattern' => '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}', 'autocomplete' => 'off', 'required' => true]) }}
                     <div class="invalid-feedback">Пароль має містити принаймні одну цифру, одну велику та малу літеру та принаймні 8 або більше символів.</div>
                     <div class="valid-feedback">Виглядає добре!</div>
                 </div>
                 <div class="col-12">
                     {{ Form::label('confirmPassword', 'Підтвердіть пароль', ['class' => 'form-label']) }}
-                    {{ Form::input('password', 'confirmPassword', null, ['class' => 'form-control', 'id' => 'confirmPassword', 'required' => true]) }}
+                    {{ Form::input('password', 'confirmPassword', null, ['class' => 'form-control', 'id' => 'confirmPassword', 'autocomplete' => 'off', 'required' => true]) }}
                     <div class="invalid-feedback">Паролі не співпадають.</div>
                     <div class="valid-feedback">Виглядає добре!</div>
                 </div>
