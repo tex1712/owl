@@ -23,14 +23,26 @@
                     <div class="toolbox d-flex flex-row align-items-center gap-2">
                         <div class="d-flex flex-wrap flex-grow-1 gap-1">
                             <div class="d-flex align-items-center flex-nowrap">
-                                <p class="mb-0 text-nowrap">Агент: <span><b>Tex</b></span></p>
-                                <p class="mb-0 ms-3 text-nowrap">Офіцер: <span><b>Нік</b></span></p>
+                                <p class="mb-0 text-nowrap">Агент: <span><b>{{ $delta->agent->name }}</b></span></p>
+                                <p class="mb-0 ms-3 text-nowrap">Офіцер: <span><b>{{ $delta->officer->name }}</b></span></p>
                             </div>
                         </div>
                         <div class="d-flex flex-wrap">
                             <div class="d-flex align-items-center flex-nowrap">
-                                <p class="mb-0 text-nowrap"><span class="badge bg-danger">Не відпрацьовано</span></p>
-                                <p class="mb-0 ms-3 text-nowrap"><span class="badge bg-danger">Не в роботі</span></p>
+                                <p class="mb-0 text-nowrap">
+                                    @if($delta->result)
+                                        <span class="badge bg-success">Відпрацьовано</span>
+                                    @else
+                                        <span class="badge bg-danger">Не відпрацьовано</span>
+                                    @endif
+                                </p>
+                                <p class="mb-0 ms-3 text-nowrap">
+                                    @if($delta->status)
+                                        <span class="badge bg-success">В роботі</span>
+                                    @else
+                                        <span class="badge bg-danger">Не в роботі</span>
+                                    @endif
+                                </p>
                             </div>
                         </div>
                     </div>

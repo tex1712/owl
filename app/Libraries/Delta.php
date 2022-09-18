@@ -4,6 +4,7 @@ namespace App\Libraries;
 
 use App\Models\Direction;
 use App\Models\Source;
+use App\Models\User;
 
 class Delta {
 
@@ -42,6 +43,9 @@ class Delta {
             'i' => 'Неможливе',
             'd' => 'Ускладнене'
         ];
+
+        $data['agents'] = User::where('role', 'agent')->pluck('name', 'id')->toArray();
+        $data['officers'] = User::where('role', 'officer')->pluck('name', 'id')->toArray();
 
         return $data[$param];
     }

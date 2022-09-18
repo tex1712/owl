@@ -22,11 +22,19 @@ class Delta extends Model
 	 * @var array
 	 */
 	protected $fillable = [
-	    'date', 'time', 'location', 'direction_id', 'reliability', 'content', 'specific', 'civil', 'correction', 'coordinates', 'source_id', 'media', 'user_id'
+	    'date', 'time', 'location', 'direction_id', 'reliability', 'content', 'specific', 'civil', 'correction', 'coordinates', 'source_id', 'media', 'user_id', 'status', 'result', 'agent_id', 'officer_id'
 	];
 
 
 	public function user() {
+        return $this->belongsTo('App\Models\User');
+    }
+
+	public function agent() {
+        return $this->belongsTo('App\Models\User');
+    }
+
+	public function officer() {
         return $this->belongsTo('App\Models\User');
     }
 
