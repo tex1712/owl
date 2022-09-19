@@ -2350,7 +2350,11 @@ $(function () {
     // Delta Table
     var table = $('#delta-table').DataTable({
       lengthChange: true,
-      buttons: ['copy', 'excel', 'pdf', 'print'],
+      pageLength: 50,
+      buttons: [{
+        extend: 'excel',
+        className: 'btn btn-secondary px-5'
+      }],
       language: _table_translate__WEBPACK_IMPORTED_MODULE_0__.$translation_ua
     });
     table.buttons().container().appendTo('#delta-table_wrapper .col-md-6:eq(0)'); // Users Table

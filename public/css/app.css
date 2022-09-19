@@ -19,3 +19,16 @@
     line-height: 0.85em;
     padding-left: 0.2em;
 }
+
+
+.table-long-text {
+    word-wrap: break-word;
+    max-width: 200px; 
+    white-space: nowrap 
+    !important;text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.buttons-excel {
+    color: white;
+}

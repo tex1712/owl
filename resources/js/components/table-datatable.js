@@ -8,7 +8,10 @@ $(function() {
         // Delta Table
         var table = $('#delta-table').DataTable( {
             lengthChange: true,
-            buttons: [ 'copy', 'excel', 'pdf', 'print'],
+            pageLength : 50,
+            buttons: [
+                { extend: 'excel', className: 'btn btn-secondary px-5' }
+            ],
             language: $translation_ua
         } );
      
