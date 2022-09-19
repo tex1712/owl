@@ -93,7 +93,7 @@
                 </div>
                 <div class="col-md-12">
                   {{ Form::label('tags', 'Теги', ['class' => 'form-label']) }}
-                  {{ Form::select('tags', Delta::getFormData('tags'), null, ['class' => 'multiple-select-tags', 'multiple' => 'multiple']) }}
+                  {{ Form::select('tags[]', Delta::getFormData('tags'), null, ['class' => 'multiple-select-tags', 'multiple' => 'multiple']) }}
                   <div class="valid-feedback">Виглядає добре!</div>
                 </div>
 

@@ -160,17 +160,19 @@
                         <div class="form-row mt-3">
                             <div class="col-12">
                               <div id="coor-container"></div>
-                              @foreach (json_decode($delta->coordinates) as $id => $coordinates)
-                                <div class="pb-3 coor-item" coor-id="{{ $id }}">
-                                    <div class="input-group">
-                                        <input type="text" readonly class="form-control" name="coordinates[{{ $id }}][long][]" value="{{ $coordinates->long[0] }}">
-                                        <input type="text" readonly class="form-control" name="coordinates[{{ $id }}][lang][]" value="{{ $coordinates->lang[0] }}">
-                                        <input type="text" readonly class="form-control" name="coordinates[{{ $id }}][desk][]" value="{{ $coordinates->desk[0] }}">
-                                        
-                                        <button coor-id="{{ $id }}" class="btn btn-outline-secondary bg-danger text-white" type="button" onclick="DeleteCoor(this);" id="button-addon2 ">X</button>
-                                    </div>
-                                </div>
-                              @endforeach
+                                @if($delta->coordinates)
+                                    @foreach (json_decode($delta->coordinates) as $id => $coordinates)
+                                      <div class="pb-3 coor-item" coor-id="{{ $id }}">
+                                          <div class="input-group">
+                                              <input type="text" readonly class="form-control" name="coordinates[{{ $id }}][long][]" value="{{ $coordinates->long[0] }}">
+                                              <input type="text" readonly class="form-control" name="coordinates[{{ $id }}][lang][]" value="{{ $coordinates->lang[0] }}">
+                                              <input type="text" readonly class="form-control" name="coordinates[{{ $id }}][desk][]" value="{{ $coordinates->desk[0] }}">
+                                              
+                                              <button coor-id="{{ $id }}" class="btn btn-outline-secondary bg-danger text-white" type="button" onclick="DeleteCoor(this);" id="button-addon2 ">X</button>
+                                          </div>
+                                      </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>

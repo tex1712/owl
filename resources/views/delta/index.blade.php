@@ -13,13 +13,6 @@
 @section('content')
 
 
-
-{{-- <div class="card">
-    <div class="card-body">
-
-    </div>
-</div> --}}
-
 <div class="card">
     <div class="card-body">
         <div class="table table-responsive ps-1 pe-1">
