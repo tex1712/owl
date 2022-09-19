@@ -18,14 +18,18 @@ class Delta {
      */
     public function getFormData($param){
 
-        $data['directions'][''] = '';
-        foreach(Direction::all() as $direction){
-            $data['directions'][$direction->id] = $direction->title;
+        if($param == 'directions'){
+            $data['directions'][''] = '';
+            foreach(Direction::all() as $direction){
+                $data['directions'][$direction->id] = $direction->title;
+            }
         }
 
-        $data['sources'][''] = '';
-        foreach(Source::all() as $source){
-            $data['sources'][$source->id] = $source->name;
+        if($param == 'sources'){
+            $data['sources'][''] = '';
+            foreach(Source::all() as $source){
+                $data['sources'][$source->id] = $source->name;
+            }
         }
 
         $data['reliability'] = [
@@ -45,21 +49,27 @@ class Delta {
             'd' => 'Ускладнене'
         ];
 
-        $data['agents'] = User::where('role', 'agent')->pluck('name', 'id')->toArray();
-
-        $data['officers'] = User::where('role', 'officer')->pluck('name', 'id')->toArray();
-
-        $tagIds = \DB::table('taggables')
-        ->distinct()
-        ->select('tag_id')
-        ->where('taggable_type', DeltaModel::class)
-        ->get()
-        ->pluck('tag_id');
-        $tags = \Spatie\Tags\Tag::whereIn('id', $tagIds)->get();
-        foreach($tags as $tag){
-            $data['tags'][$tag->name] = $tag->name;
+        if($param == 'agents'){
+            $data['agents'] = User::where('role', 'agent')->pluck('name', 'id')->toArray();
         }
-        
+
+        if($param == 'officers'){
+            $data['officers'] = User::where('role', 'officer')->pluck('name', 'id')->toArray();
+        }
+
+        if($param == 'tags'){
+            $tagIds = \DB::table('taggables')
+            ->distinct()
+            ->select('tag_id')
+            ->where('taggable_type', DeltaModel::class)
+            ->get()
+            ->pluck('tag_id');
+            $tags = \Spatie\Tags\Tag::whereIn('id', $tagIds)->get();
+            foreach($tags as $tag){
+                $data['tags'][$tag->name] = $tag->name;
+            }
+         }
+
 
         if(array_key_exists($param, $data))
             return $data[$param];

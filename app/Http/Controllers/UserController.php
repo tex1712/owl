@@ -79,7 +79,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->password = \Hash::make($request->input('password'));
+        $user->email = $request->input('email');
+        $user->name = $request->input('name');
+        $user->role = $request->input('role');
+        $user->save();
+
+        return redirect()->route('users.index');
     }
 
     /**
