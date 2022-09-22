@@ -44,8 +44,8 @@
                     </div>
                     <div class="col-md-8">
                       {{ Form::label('delta-content', 'Опис', ['class' => 'form-label']) }}
-                      {{ Form::textarea('content', $delta->content, ['class' => 'form-control', 'id' => 'delta-content', 'placeholder' => 'Детальний опис обʼєкта"', 'required' => true, 'minlength' => 80, 'rows' => 5]) }}
-                      <div class="invalid-feedback">Опишіть обʼєкт (мінімум 80 символів).</div>
+                      {{ Form::textarea('content', $delta->content, ['class' => 'form-control', 'id' => 'delta-content', 'placeholder' => 'Детальний опис обʼєкта"', 'required' => true, 'minlength' => 40, 'rows' => 5]) }}
+                      <div class="invalid-feedback">Опишіть обʼєкт (мінімум 40 символів).</div>
                       <div class="valid-feedback">Виглядає добре!</div>
                     </div>
                     <div class="col-md-2">
@@ -99,20 +99,22 @@
                     </div>
 
 
-                    <h5 class="mb-0 mt-5">Статус | Користувачі</h5>
+                    <h5 class="mb-0 mt-5">Статус @can('admin')| Користувачі @endcan</h5>
                     <hr/>
-                    <div class="col-md-4">
-                      {{ Form::label('agent_id', 'Агент', ['class' => 'form-label']) }}
-                      {{ Form::select('agent_id', Delta::getFormData('agents'), $delta->agent_id, ['class' => 'single-select', 'required' => true]) }}
-                      <div class="invalid-feedback">Необхідно зробити вибір.</div>
-                      <div class="valid-feedback">Виглядає добре!</div>
-                    </div>
-                    <div class="col-md-4">
-                      {{ Form::label('officer_id', 'Офіцер', ['class' => 'form-label']) }}
-                      {{ Form::select('officer_id', Delta::getFormData('officers'), $delta->officer_id, ['class' => 'single-select', 'required' => true]) }}
-                      <div class="invalid-feedback">Необхідно зробити вибір.</div>
-                      <div class="valid-feedback">Виглядає добре!</div>
-                    </div>
+                    @can('admin')
+                      <div class="col-md-4">
+                        {{ Form::label('agent_id', 'Агент', ['class' => 'form-label']) }}
+                        {{ Form::select('agent_id', Delta::getFormData('agents'), $delta->agent_id, ['class' => 'single-select', 'required' => true]) }}
+                        <div class="invalid-feedback">Необхідно зробити вибір.</div>
+                        <div class="valid-feedback">Виглядає добре!</div>
+                      </div>
+                      <div class="col-md-4">
+                        {{ Form::label('officer_id', 'Офіцер', ['class' => 'form-label']) }}
+                        {{ Form::select('officer_id', Delta::getFormData('officers'), $delta->officer_id, ['class' => 'single-select', 'required' => true]) }}
+                        <div class="invalid-feedback">Необхідно зробити вибір.</div>
+                        <div class="valid-feedback">Виглядає добре!</div>
+                      </div>
+                    @endcan
                     <div class="col-md-2">
                       {{ Form::label('delta-result-yes', 'Обʼєкт відпрацьований?', ['class' => 'form-label']) }}
                       <div class="form-check">

@@ -41,4 +41,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function isAgent(){
+        return $this->role == 'agent';
+    }
+
+    public function isOfficer(){
+        return $this->role == 'officer';
+    }
+
+    public function isAdmin(){
+        return $this->role == 'admin';
+    }
+
 }

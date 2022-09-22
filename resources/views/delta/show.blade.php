@@ -7,13 +7,15 @@
   <li class="breadcrumb-item active" aria-current="page">Обʼєкт: ID {{ $delta->id }}</li>
 @stop
 
-@section('controls')
-    <a href="{{ route('delta.create') }}" class="me-2"><button type="button" class="btn btn-success px-3">+ Додати</button> </a>
-    <a href="{{ route('delta.edit', $delta->id) }}" class="me-2"><button type="button" class="btn btn-warning px-3"><ion-icon name="pencil"></ion-icon> Редагувати</button> </a>
-    <a href="javascript:;" id="delta_{{ $delta->id }}" class="delete-item"><button type="button" class="btn btn-danger px-3"><ion-icon name="trash"></ion-icon> Видалити</button></a>
-    {{ Form::open(['url' => route('delta.destroy', $delta->id), 'method' => 'DELETE', 'class' => 'delete-form', 'id' => 'delete_'.'delta_'.$delta->id ]) }}
-    {{ Form::close() }}
-@stop
+@can('agent')
+    @section('controls')
+        <a href="{{ route('delta.create') }}" class="me-2"><button type="button" class="btn btn-success px-3">+ Додати</button> </a>
+        <a href="{{ route('delta.edit', $delta->id) }}" class="me-2"><button type="button" class="btn btn-warning px-3"><ion-icon name="pencil"></ion-icon> Редагувати</button> </a>
+        <a href="javascript:;" id="delta_{{ $delta->id }}" class="delete-item"><button type="button" class="btn btn-danger px-3"><ion-icon name="trash"></ion-icon> Видалити</button></a>
+        {{ Form::open(['url' => route('delta.destroy', $delta->id), 'method' => 'DELETE', 'class' => 'delete-form', 'id' => 'delete_'.'delta_'.$delta->id ]) }}
+        {{ Form::close() }}
+    @stop
+@endcan
 
 @section('content')
     <div class="row">
@@ -53,7 +55,7 @@
             <div class="card">
                 <div class="card-body">
                 <h4 class="mb-2">Опис</h4>
-                    <p>{{ $delta->content }}</p>
+                    <p>{!! nl2br($delta->content) !!}</p>
                 </div>
             </div>
         </div>

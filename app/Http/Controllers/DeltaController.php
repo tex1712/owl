@@ -19,20 +19,26 @@ class DeltaController extends Controller
     {
 
         $deltas = Delta::select("*")
-                ->when(($request->filled('agent_id')), function ($query) use ($request) {
+                ->when($request->filled('agent_id'), function ($query) use ($request) {
                     $query->where('agent_id', $request->agent_id);
                 })
-                ->when(($request->filled('officer_id')), function ($query) use ($request) {
+                ->when($request->filled('officer_id'), function ($query) use ($request) {
                     $query->where('officer_id', $request->officer_id);
                 })
-                ->when(($request->filled('status')), function ($query) use ($request) {
+                ->when($request->filled('status'), function ($query) use ($request) {
                     $query->where('status', $request->status);
                 })
-                ->when(($request->filled('result')), function ($query) use ($request) {
+                ->when($request->filled('result'), function ($query) use ($request) {
                     $query->where('result', $request->result);
                 })
-                ->when(($request->filled('tags')), function ($query) use ($request) {
+                ->when($request->filled('tags'), function ($query) use ($request) {
                     $query->withAnyTags($request->input('tags'));
+                })
+                ->when(\Auth::user()->isAgent(), function ($query) use ($request){
+                    $query->where('agent_id', \Auth::id());
+                })
+                ->when(\Auth::user()->isOfficer(), function ($query) use ($request){
+                    $query->where('officer_id', \Auth::id());
                 })
                 ->get();
 
@@ -46,6 +52,10 @@ class DeltaController extends Controller
      */
     public function create()
     {
+        if (!\Gate::allows('agent')) {
+            abort(403);
+        }
+
         return view('delta.create');
     }
 
@@ -57,10 +67,18 @@ class DeltaController extends Controller
      */
     public function store(Request $request)
     {
+        if (!\Gate::allows('agent')) {
+            abort(403);
+        }
+
         $delta = new Delta;
         $delta->fill($request->except(['coordinates']));
         $delta->coordinates = json_encode($request->input('coordinates'));
         $delta->user_id = \Auth::id();
+        if(\Auth::user()->isAgent()){
+            $delta->agent_id = \Auth::id();
+            $delta->officer_id = \Auth::user()->officer_id;
+        }
         $delta->save();
 
         return redirect()->route('delta.show', $delta->id);
@@ -75,6 +93,11 @@ class DeltaController extends Controller
     public function show($id)
     {
         $delta = Delta::find($id);
+
+        if (!\Gate::allows('delta_view', $delta)) {
+            abort(403);
+        }
+        
         return view('delta.show', compact('delta'));
     }
 
@@ -87,6 +110,11 @@ class DeltaController extends Controller
     public function edit($id)
     {
         $delta = Delta::find($id);
+
+        if (!\Gate::allows('delta_manage', $delta)) {
+            abort(403);
+        }
+
         return view('delta.edit', compact('delta'));
     }
 
@@ -100,6 +128,11 @@ class DeltaController extends Controller
     public function update(Request $request, $id)
     {
         $delta = Delta::findOrFail($id);
+
+        if (!\Gate::allows('delta_manage', $delta)) {
+            abort(403);
+        }
+
         $delta->fill($request->except(['coordinates', 'tags']));
         $delta->coordinates = json_encode($request->input('coordinates'));
         $delta->syncTags($request->input('tags'));
@@ -117,6 +150,11 @@ class DeltaController extends Controller
     public function destroy($id)
     {
         $delta = Delta::findOrFail($id);
+
+        if (!\Gate::allows('delta_manage', $delta)) {
+            abort(403);
+        }
+        
         $delta->delete();
         return redirect()->route('delta.index');
     }

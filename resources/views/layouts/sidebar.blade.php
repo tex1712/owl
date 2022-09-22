@@ -21,34 +21,38 @@
         </a>
       </li>
 
-      <li class="menu-label">Розвід дані</li>
+      <li class="menu-label">Дані</li>
       <li>
         <a class="has-arrow" href="javascript:;">
           <div class="parent-icon">
             <i class="bi bi-map"></i>
           </div>
-          <div class="menu-title">Дельта</div>
+          <div class="menu-title">Обʼєкти</div>
         </a>
         <ul>
           <li> <a href="{{ route('delta.index') }}">
               <i class="bi bi-list"></i>Список обʼєктів
             </a>
           </li>
-          <li> <a href="{{ route('delta.create') }}">
-              <i class="bi bi-plus"></i>Додати новий
-            </a>
-          </li>
+          @can('agent')
+            <li> <a href="{{ route('delta.create') }}">
+                <i class="bi bi-plus"></i>Додати новий
+              </a>
+            </li>
+          @endcan
         </ul>
       </li>
-      <li class="menu-label">Налаштування</li>
-      <li>
-        <a href="{{ route('users.index') }}">
-          <div class="parent-icon">
-            <i class="fa-solid fa-users"></i>
-          </div>
-          <div class="menu-title">Користувачі</div>
-        </a>
-      </li>
+      @can('admin')
+        <li class="menu-label">Налаштування</li>
+        <li>
+          <a href="{{ route('users.index') }}">
+            <div class="parent-icon">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <div class="menu-title">Користувачі</div>
+          </a>
+        </li>
+      @endcan
 
     </ul>
     <!--end navigation-->

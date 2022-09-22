@@ -43,8 +43,8 @@
                 </div>
                 <div class="col-md-8">
                   {{ Form::label('delta-content', 'Опис', ['class' => 'form-label']) }}
-                  {{ Form::textarea('content', null, ['class' => 'form-control', 'id' => 'delta-content', 'placeholder' => 'Детальний опис обʼєкта"', 'required' => true, 'minlength' => 80, 'rows' => 5]) }}
-                  <div class="invalid-feedback">Опишіть обʼєкт (мінімум 80 символів).</div>
+                  {{ Form::textarea('content', null, ['class' => 'form-control', 'id' => 'delta-content', 'placeholder' => 'Детальний опис обʼєкта"', 'required' => true, 'minlength' => 40, 'rows' => 5]) }}
+                  <div class="invalid-feedback">Опишіть обʼєкт (мінімум 40 символів).</div>
                   <div class="valid-feedback">Виглядає добре!</div>
                 </div>
                 <div class="col-md-2">
@@ -98,19 +98,34 @@
                 </div>
 
 
-                <h5 class="mb-0 mt-5">Статус | Користувачі</h5>
+                <h5 class="mb-0 mt-5">Статус @can('admin')| Користувачі @endcan</h5>
                 <hr/>
-                <div class="col-md-4">
-                  {{ Form::label('agent_id', 'Агент', ['class' => 'form-label']) }}
-                  {{ Form::select('agent_id', Delta::getFormData('agents'), Auth::id(), ['class' => 'single-select', 'required' => true]) }}
-                  <div class="invalid-feedback">Необхідно зробити вибір.</div>
-                  <div class="valid-feedback">Виглядає добре!</div>
-                </div>
-                <div class="col-md-4">
-                  {{ Form::label('officer_id', 'Офіцер', ['class' => 'form-label']) }}
-                  {{ Form::select('officer_id', Delta::getFormData('officers'), 3, ['class' => 'single-select', 'required' => true]) }}
-                  <div class="invalid-feedback">Необхідно зробити вибір.</div>
-                  <div class="valid-feedback">Виглядає добре!</div>
+                @can('admin')
+                  <div class="col-md-4">
+                    {{ Form::label('agent_id', 'Агент', ['class' => 'form-label']) }}
+                    {{ Form::select('agent_id', Delta::getFormData('agents'), null, ['class' => 'single-select-empty', 'required' => true]) }}
+                    <div class="invalid-feedback">Необхідно зробити вибір.</div>
+                    <div class="valid-feedback">Виглядає добре!</div>
+                  </div>
+                  <div class="col-md-4">
+                    {{ Form::label('officer_id', 'Офіцер', ['class' => 'form-label']) }}
+                    {{ Form::select('officer_id', Delta::getFormData('officers'), null, ['class' => 'single-select-empty', 'required' => true]) }}
+                    <div class="invalid-feedback">Необхідно зробити вибір.</div>
+                    <div class="valid-feedback">Виглядає добре!</div>
+                  </div>
+                @endcan
+                <div class="col-md-2">
+                  {{ Form::label('delta-status-yes', 'Обʼєкт в роботі?', ['class' => 'form-label']) }}
+                  <div class="form-check">
+                    {{ Form::radio('status', 1, false, ['class' => 'form-check-input', 'id' => 'delta-status-yes', 'required' => true]) }}
+                    {{ Form::label('delta-status-yes', 'Так', ['class' => 'form-check-label']) }}
+                  </div>
+                  <div class="form-check mb-3">
+                    {{ Form::radio('status', 0, true, ['class' => 'form-check-input', 'id' => 'delta-status-no', 'required' => true]) }}
+                    {{ Form::label('delta-status-no', 'Ні', ['class' => 'form-check-label']) }}
+                    <div class="invalid-feedback">Необхідно зробити вибір.</div>
+                    <div class="valid-feedback">Виглядає добре!</div>
+                  </div>
                 </div>
                 <div class="col-md-2">
                   {{ Form::label('delta-result-yes', 'Обʼєкт відпрацьований?', ['class' => 'form-label']) }}
@@ -121,19 +136,6 @@
                   <div class="form-check mb-3">
                     {{ Form::radio('result', 0, true, ['class' => 'form-check-input', 'id' => 'delta-result-no', 'required' => true]) }}
                     {{ Form::label('delta-result-no', 'Ні', ['class' => 'form-check-label']) }}
-                    <div class="invalid-feedback">Необхідно зробити вибір.</div>
-                    <div class="valid-feedback">Виглядає добре!</div>
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  {{ Form::label('delta-status-yes', 'Обʼєкт в роботі?', ['class' => 'form-label']) }}
-                  <div class="form-check">
-                    {{ Form::radio('status', 1, false, ['class' => 'form-check-input', 'id' => 'delta-status-yes', 'required' => true]) }}
-                    {{ Form::label('delta-status-yes', 'Так', ['class' => 'form-check-label']) }}
-                  </div>
-                  <div class="form-check mb-3">
-                    {{ Form::radio('status', 0, true, ['class' => 'form-check-input', 'id' => 'delta-status-no', 'required' => true]) }}
-                    {{ Form::label('delta-status-no', 'Ні', ['class' => 'form-check-label']) }}
                     <div class="invalid-feedback">Необхідно зробити вибір.</div>
                     <div class="valid-feedback">Виглядає добре!</div>
                   </div>

@@ -35,5 +35,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('/delta', DeltaController::class);
 
     // Users
-    Route::resource('/users', UserController::class);
+    Route::resource('/users', UserController::class)->middleware('check-users-access');
 });

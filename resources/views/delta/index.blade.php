@@ -6,9 +6,11 @@
   <li class="breadcrumb-item active" aria-current="page">Список обʼєктів</li>
 @stop
 
-@section('controls')
-    <a href="{{ route('delta.create') }}"><button type="button" class="btn btn-success px-3">+ Додати</button> </a>
-@stop
+@can('agent')
+    @section('controls')
+        <a href="{{ route('delta.create') }}"><button type="button" class="btn btn-success px-3">+ Додати</button> </a>
+    @stop
+@endcan
 
 @section('content')
 
@@ -18,14 +20,18 @@
             <div class="card-body"> 
                 <div class="col-12">
                     {{ Form::open(['route' => 'delta.index', 'method' => 'GET', 'enctype' => 'multipart/form-data', 'class' => 'row g-3', 'novalidate' => true]) }}
-                        <div class="col-12 col-lg">
-                            {{ Form::label('filter-agent_id', 'Агент', ['class' => 'form-label']) }}
-                            {{ Form::select('agent_id', Delta::getFormData('agents'), Request::query('agent_id'), ['id' => 'filter-agent_id', 'class' => (Request::filled('agent_id')) ? 'single-select' : 'single-select-empty']) }}
-                        </div>
-                        <div class="col-12 col-lg">
-                            {{ Form::label('filter-officer_id', 'Офіцер', ['class' => 'form-label']) }}
-                            {{ Form::select('officer_id', Delta::getFormData('officers'), Request::query('officer_id'), ['id' => 'filter-officer_id', 'class' => (Request::filled('officer_id')) ? 'single-select' : 'single-select-empty']) }}
-                        </div>
+                        @can('officer')
+                            <div class="col-12 col-lg">
+                                {{ Form::label('filter-agent_id', 'Агент', ['class' => 'form-label']) }}
+                                {{ Form::select('agent_id', Delta::getFormData('agents'), Request::query('agent_id'), ['id' => 'filter-agent_id', 'class' => (Request::filled('agent_id')) ? 'single-select' : 'single-select-empty']) }}
+                            </div>
+                        @endcan
+                        @can('admin')
+                            <div class="col-12 col-lg">
+                                {{ Form::label('filter-officer_id', 'Офіцер', ['class' => 'form-label']) }}
+                                {{ Form::select('officer_id', Delta::getFormData('officers'), Request::query('officer_id'), ['id' => 'filter-officer_id', 'class' => (Request::filled('officer_id')) ? 'single-select' : 'single-select-empty']) }}
+                            </div>
+                        @endcan
                         <div class="col-12 col-lg">
                             {{ Form::label('filter-agent_id', 'В роботі', ['class' => 'form-label']) }}
                             {{ Form::select('status', [1 => 'Так', 0 => 'Ні'], Request::query('status'), ['class' => (Request::filled('status')) ? 'single-select' : 'single-select-empty']) }}
@@ -47,12 +53,16 @@
                 @if(!empty(array_filter(Request::all())) || Request::filled('status') || Request::filled('result'))
                     <div class="col-12 col-lg mt-3 d-md-flex align-items-center">
                         <p class="align-middle mb-0 mt-2">
-                            @if(Request::filled('agent_id'))
-                                <span class="me-2">Агент: <span class="badge rounded-pill bg-secondary">{{ Users::getUserParamById(Request::query('agent_id'), 'name') }}</span></span>
-                            @endif
-                            @if(Request::filled('officer_id'))
-                                <span class="me-2">Офіцер: <span class="badge rounded-pill bg-secondary">{{ Users::getUserParamById(Request::query('officer_id'), 'name') }}</span></span>
-                            @endif
+                            @can('officer')
+                                @if(Request::filled('agent_id'))
+                                    <span class="me-2">Агент: <span class="badge rounded-pill bg-secondary">{{ Users::getUserParamById(Request::query('agent_id'), 'name') }}</span></span>
+                                @endif
+                            @endcan
+                            @can('admin')
+                                @if(Request::filled('officer_id'))
+                                    <span class="me-2">Офіцер: <span class="badge rounded-pill bg-secondary">{{ Users::getUserParamById(Request::query('officer_id'), 'name') }}</span></span>
+                                @endif
+                            @endcan
                             @if(Request::filled('status'))
                                 <span class="me-2">В роботі: <span class="badge rounded-pill bg-secondary">{{ (Request::query('status')) ? 'Так' : 'Ні' }}</span></span>
                             @endif
