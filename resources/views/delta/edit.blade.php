@@ -160,7 +160,7 @@
                         <div class="form-row mt-3">
                             <div class="col-12">
                               <div id="coor-container"></div>
-                                @if($delta->coordinates)
+                                @if(!is_null(json_decode($delta->coordinates)))
                                     @foreach (json_decode($delta->coordinates) as $id => $coordinates)
                                       <div class="pb-3 coor-item" coor-id="{{ $id }}">
                                           <div class="input-group">
