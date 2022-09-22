@@ -18,20 +18,33 @@ class LoginController extends Controller
      */
     public function authenticate(Request $request)
     {
+
         $credentials = $request->validate([
             'email' => ['required', 'email'],
-            'password' => ['required'],
+            'password' => ['required']
         ]);
+
+        $remember_me = $request->has('remember_me') ? true : false; 
  
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')], $remember_me)) {
             $request->session()->regenerate();
  
             return redirect()->intended(route('dashboard'));
         }
+        
  
         return back()->withErrors([
             'email' => 'Невірний логін чи пароль.',
         ])->onlyInput('email');
+    }
+
+
+    public function login(){
+
+        if(auth()->check())
+            return redirect()->route('dashboard');
+
+        return view('auth.login');
     }
 
     public function logout(){

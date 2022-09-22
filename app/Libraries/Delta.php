@@ -19,21 +19,18 @@ class Delta {
     public function getFormData($param){
 
         if($param == 'directions'){
-            $data['directions'][''] = '';
             foreach(Direction::all() as $direction){
                 $data['directions'][$direction->id] = $direction->title;
             }
         }
 
         if($param == 'sources'){
-            $data['sources'][''] = '';
             foreach(Source::all() as $source){
                 $data['sources'][$source->id] = $source->name;
             }
         }
 
         $data['reliability'] = [
-            '' => '',
             'a' => 'A - Надійне',
             'b' => 'B - У цілому надійне',
             'c' => 'C - Зазвичай надійне',
@@ -43,7 +40,6 @@ class Delta {
         ];
 
         $data['specific'] = [
-            '' => '',
             'p' => 'Можливе',
             'i' => 'Неможливе',
             'd' => 'Ускладнене'
@@ -80,7 +76,7 @@ class Delta {
 
 
     /**
-     * Display a listing of the resource.
+     * Returns Tags list by Delta ID.
      *
      * @param int $id
      * @return array
@@ -95,5 +91,7 @@ class Delta {
 
         return $tags;
     }
+
+
 
 }

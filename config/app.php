@@ -178,6 +178,7 @@ return [
 
         // Custom Providers
         App\Providers\Custom\DeltaProvider::class,
+        App\Providers\Custom\UsersProvider::class,
 
     ],
 
@@ -235,6 +236,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         //Custom Facades
         'Delta' => App\Facades\DeltaFacade::class,
+        'Users' => App\Facades\UsersFacade::class,
 
     ],
 

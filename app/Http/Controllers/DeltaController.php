@@ -12,11 +12,30 @@ class DeltaController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $deltas = Delta::all();
+
+        $deltas = Delta::select("*")
+                ->when(($request->filled('agent_id')), function ($query) use ($request) {
+                    $query->where('agent_id', $request->agent_id);
+                })
+                ->when(($request->filled('officer_id')), function ($query) use ($request) {
+                    $query->where('officer_id', $request->officer_id);
+                })
+                ->when(($request->filled('status')), function ($query) use ($request) {
+                    $query->where('status', $request->status);
+                })
+                ->when(($request->filled('result')), function ($query) use ($request) {
+                    $query->where('result', $request->result);
+                })
+                ->when(($request->filled('tags')), function ($query) use ($request) {
+                    $query->withAnyTags($request->input('tags'));
+                })
+                ->get();
+
         return view('delta.index', compact('deltas'));
     }
 
@@ -97,12 +116,9 @@ class DeltaController extends Controller
      */
     public function destroy($id)
     {
-
         $delta = Delta::findOrFail($id);
         $delta->delete();
-
         return redirect()->route('delta.index');
     }
-
 
 }

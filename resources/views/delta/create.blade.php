@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-md-4">
                   {{ Form::label('direction_id', 'Напрямок', ['class' => 'form-label']) }}
-                  {{ Form::select('direction_id', Delta::getFormData('directions'), null, ['class' => 'single-select', 'required' => true]) }}
+                  {{ Form::select('direction_id', Delta::getFormData('directions'), null, ['class' => 'single-select-empty', 'required' => true]) }}
                   <div class="invalid-feedback">Необхідно зробити вибір.</div>
                   <div class="valid-feedback">Виглядає добре!</div>
                 </div>
@@ -75,19 +75,19 @@
                 </div>
                 <div class="col-md-4">
                   {{ Form::label('reliability', 'Надійність', ['class' => 'form-label']) }}
-                  {{ Form::select('reliability', Delta::getFormData('reliability'), null, ['class' => 'single-select', 'required' => true]) }}
+                  {{ Form::select('reliability', Delta::getFormData('reliability'), null, ['class' => 'single-select-empty', 'required' => true]) }}
                   <div class="invalid-feedback">Необхідно зробити вибір.</div>
                   <div class="valid-feedback">Виглядає добре!</div>
                 </div>
                 <div class="col-md-4">
                   {{ Form::label('specific', 'Уточнення', ['class' => 'form-label']) }}
-                  {{ Form::select('specific', Delta::getFormData('specific'), null, ['class' => 'single-select', 'required' => true]) }}
+                  {{ Form::select('specific', Delta::getFormData('specific'), null, ['class' => 'single-select-empty', 'required' => true]) }}
                   <div class="invalid-feedback">Необхідно зробити вибір.</div>
                   <div class="valid-feedback">Виглядає добре!</div>
                 </div>
                 <div class="col-md-4">
                   {{ Form::label('source_id', 'Джерело', ['class' => 'form-label']) }}
-                  {{ Form::select('source_id', Delta::getFormData('sources'), null, ['class' => 'single-select', 'required' => true]) }}
+                  {{ Form::select('source_id', Delta::getFormData('sources'), null, ['class' => 'single-select-empty', 'required' => true]) }}
                   <div class="invalid-feedback">Необхідно зробити вибір.</div>
                   <div class="valid-feedback">Виглядає добре!</div>
                 </div>

@@ -15,7 +15,7 @@
                 {{ Form::open(['route' => 'authenticate', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'form-body row g-3', 'novalidate' => true]) }}
 
                     <div class="col-12">
-                        {{ Form::label('inputEmail', 'Елетрона пошта', ['class' => 'form-label']) }}
+                        {{ Form::label('inputEmail', 'Елетронна пошта', ['class' => 'form-label']) }}
                         {{ Form::email('email', null, ['class' => 'form-control', 'id' => 'inputEmail', 'required' => true]) }}
                         @if($errors->has('email'))
                             <div class="error text-danger">{{ $errors->first('email') }}</div>
@@ -27,8 +27,8 @@
                     </div>
                     <div class="col-12 col-lg-6">
                         <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckRemember">
-                        <label class="form-check-label" for="flexSwitchCheckRemember">Запам'ятати мене</label>
+                            {{ Form::checkbox('remember_me', true, null, ['class' => 'form-check-input', 'id' => 'flexSwitchCheckRemember', 'role' => 'switch']) }}
+                            {{ Form::label('flexSwitchCheckRemember', 'Запам\'ятати мене', ['class' => 'form-check-label']) }}
                         </div>
                     </div>
                     <div class="col-12 col-lg-6 text-end">

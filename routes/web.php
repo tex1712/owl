@@ -20,13 +20,20 @@ use App\Http\Controllers\UserController;
 */
 
 // Authentication
-Route::view('/login', 'auth.login')->name('login');
+Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 Route::group(['middleware' => ['auth']], function() {
+    // Dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Delta
+    Route::post('/delta/filter', [DeltaController::class, 'filter'])->name('delta.filter');
+    Route::get('/delta/filtered', [DeltaController::class, 'filter'])->name('delta.filtered');
     Route::resource('/delta', DeltaController::class);
+
+    // Users
     Route::resource('/users', UserController::class);
 });
