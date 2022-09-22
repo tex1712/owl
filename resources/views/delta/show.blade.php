@@ -66,7 +66,7 @@
                     <p class="mb-3"><i class="fa-sharp fa-solid fa-diamond-turn-right me-2"></i>{{ $delta->direction->title }}</p>
                     <h6 class="mb-0">Населений пункт:</h6>
                     <p class="mb-3"><ion-icon name="compass-sharp" class="me-2"></ion-icon>{{ $delta->location }}</p>
-                    @if($delta->coordinates)
+                    @if(!is_null(json_decode($delta->coordinates)))
                         <h6 class="mb-0">Координати:</h6>
                         <ul class="mb-3 ps-0 list-group-flush">
                             @foreach (json_decode($delta->coordinates) as $coordinates)
