@@ -130,7 +130,7 @@
                       {{ Form::label('delta-status-yes', 'Обʼєкт в роботі?', ['class' => 'form-label']) }}
                       <div class="form-check">
                         {{ Form::radio('status', 1, ($delta->status), ['class' => 'form-check-input', 'id' => 'delta-status-yes', 'required' => true]) }}
-                        {{ Form::label('delta-civil-yes', 'Так', ['class' => 'form-check-label']) }}
+                        {{ Form::label('delta-status-yes', 'Так', ['class' => 'form-check-label']) }}
                       </div>
                       <div class="form-check mb-3">
                         {{ Form::radio('status', 0, (!$delta->status), ['class' => 'form-check-input', 'id' => 'delta-status-no', 'required' => true]) }}
