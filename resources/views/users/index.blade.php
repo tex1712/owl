@@ -33,7 +33,7 @@
                                     @if($user->role == 'agent')
                                         Агент
                                     @elseif($user->role == 'officer')
-                                        Офісер
+                                        Офіцер
                                     @endif
                                 </td>
                                 <td>{{ $user->email }}</td>
