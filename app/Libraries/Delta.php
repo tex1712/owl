@@ -18,6 +18,8 @@ class Delta {
      */
     public function getFormData($param){
 
+        $user = \Auth::user();
+
         if($param == 'directions'){
             foreach(Direction::all() as $direction){
                 $data['directions'][$direction->id] = $direction->title;
@@ -26,7 +28,14 @@ class Delta {
 
         if($param == 'sources'){
             foreach(Source::all() as $source){
-                $data['sources'][$source->id] = $source->name;
+                if($user->isAdmin()){
+                    $data['sources'][$source->id] = $source->name;
+                }
+                if($user->isAgent()){
+                    if($user->id == $source->user_id){
+                        $data['sources'][$source->id] = $source->name;
+                    }
+                }
             }
         }
 
