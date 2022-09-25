@@ -9,6 +9,7 @@ $(function() {
         var table = $('#delta-table').DataTable( {
             lengthChange: true,
             pageLength : 50,
+            order: [[3, 'desc']],
             buttons: [
                 { extend: 'excel', className: 'btn btn-secondary px-5' }
             ],

@@ -41,54 +41,40 @@
                   <div class="invalid-feedback">Виберіть час.</div>
                   <div class="valid-feedback">Виглядає добре!</div>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-6">
                   {{ Form::label('delta-content', 'Опис', ['class' => 'form-label']) }}
                   {{ Form::textarea('content', null, ['class' => 'form-control', 'id' => 'delta-content', 'placeholder' => 'Детальний опис обʼєкта"', 'required' => true, 'minlength' => 40, 'rows' => 5]) }}
                   <div class="invalid-feedback">Опишіть обʼєкт (мінімум 40 символів).</div>
                   <div class="valid-feedback">Виглядає добре!</div>
                 </div>
-                <div class="col-md-2">
-                  {{ Form::label('delta-civil-yes', 'Чи присутні цивільні?', ['class' => 'form-label']) }}
-                  <div class="form-check">
-                    {{ Form::radio('civil', 1, false, ['class' => 'form-check-input', 'id' => 'delta-civil-yes', 'required' => true]) }}
-                    {{ Form::label('delta-civil-yes', 'Так', ['class' => 'form-check-label']) }}
-                  </div>
-                  <div class="form-check mb-3">
-                    {{ Form::radio('civil', 0, false, ['class' => 'form-check-input', 'id' => 'delta-civil-no', 'required' => true]) }}
-                    {{ Form::label('delta-civil-no', 'Ні', ['class' => 'form-check-label']) }}
-                    <div class="invalid-feedback">Необхідно зробити вибір.</div>
-                    <div class="valid-feedback">Виглядає добре!</div>
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  {{ Form::label('delta-correction-yes', 'Чи можливе коригування?', ['class' => 'form-label']) }}
-                  <div class="form-check">
-                    {{ Form::radio('correction', 1, false, ['class' => 'form-check-input', 'id' => 'delta-correction-yes', 'required' => true]) }}
-                    {{ Form::label('delta-correction-yes', 'Так', ['class' => 'form-check-label']) }}
-                  </div>
-                  <div class="form-check mb-3">
-                    {{ Form::radio('correction', 0, false, ['class' => 'form-check-input', 'id' => 'delta-correction-no', 'required' => true]) }}
-                    {{ Form::label('delta-correction-no', 'Ні', ['class' => 'form-check-label']) }}
-                    <div class="invalid-feedback">Необхідно зробити вибір.</div>
-                    <div class="valid-feedback">Виглядає добре!</div>
-                  </div>
-                </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                   {{ Form::label('reliability', 'Надійність', ['class' => 'form-label']) }}
                   {{ Form::select('reliability', Delta::getFormData('reliability'), null, ['class' => 'single-select-empty', 'required' => true]) }}
                   <div class="invalid-feedback">Необхідно зробити вибір.</div>
                   <div class="valid-feedback">Виглядає добре!</div>
                 </div>
-                <div class="col-md-4">
-                  {{ Form::label('specific', 'Уточнення', ['class' => 'form-label']) }}
-                  {{ Form::select('specific', Delta::getFormData('specific'), null, ['class' => 'single-select-empty', 'required' => true]) }}
-                  <div class="invalid-feedback">Необхідно зробити вибір.</div>
-                  <div class="valid-feedback">Виглядає добре!</div>
-                </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                   {{ Form::label('source_id', 'Джерело', ['class' => 'form-label']) }}
                   {{ Form::select('source_id', Delta::getFormData('sources'), null, ['class' => 'single-select-empty', 'required' => true]) }}
                   <div class="invalid-feedback">Необхідно зробити вибір.</div>
+                  <div class="valid-feedback">Виглядає добре!</div>
+                </div>
+
+                <h5 class="mb-0 mt-5">Додатково</h5>
+                <hr/>
+                <div class="col-md-4">
+                  {{ Form::label('civil', 'Чи присутні цивільні?', ['class' => 'form-label']) }}
+                  {{ Form::select('civil', [1 => 'Так', 0 => 'Ні'], null, ['class' => 'single-select-empty']) }}
+                  <div class="valid-feedback">Виглядає добре!</div>
+                </div>
+                <div class="col-md-4">
+                  {{ Form::label('correction', 'Чи можливе коригування?', ['class' => 'form-label']) }}
+                  {{ Form::select('correction', [1 => 'Так', 0 => 'Ні'], null, ['class' => 'single-select-empty']) }}
+                  <div class="valid-feedback">Виглядає добре!</div>
+                </div>
+                <div class="col-md-4">
+                  {{ Form::label('specific', 'Уточнення', ['class' => 'form-label']) }}
+                  {{ Form::select('specific', Delta::getFormData('specific'), null, ['class' => 'single-select']) }}
                   <div class="valid-feedback">Виглядає добре!</div>
                 </div>
                 <div class="col-md-12">
