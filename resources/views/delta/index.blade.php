@@ -37,8 +37,8 @@
                             {{ Form::select('status', [1 => 'Так', 0 => 'Ні'], Request::query('status'), ['class' => (Request::filled('status')) ? 'single-select' : 'single-select-empty']) }}
                         </div>
                         <div class="col-12 col-lg">
-                            {{ Form::label('filter-agent_id', 'Відпрацьований', ['class' => 'form-label']) }}
-                            {{ Form::select('result', [1 => 'Так', 0 => 'Ні'], Request::query('result'), ['class' => (Request::filled('result')) ? 'single-select' : 'single-select-empty']) }}
+                            {{ Form::label('filter-source_id', 'Джерело', ['class' => 'form-label']) }}
+                            {{ Form::select('source_id', Delta::getFormData('sources'), Request::query('source_id'), ['class' => (Request::filled('source_id')) ? 'single-select' : 'single-select-empty']) }}
                         </div>
                         <div class="col-12 col-lg">
                             {{ Form::label('tags', 'Теги', ['class' => 'form-label']) }}
@@ -93,43 +93,17 @@
                         <th>Дата</th>
                         <th>Надійність</th>
                         <th>Опис</th>
-                        <th>Уточнення</th>
-                        <th>Цивільні</th>
-                        <th>Коригування</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($deltas as $delta)
                         <tr>
                             <td>{{ $delta->id }}</td>
-                            <td class="table-long-text" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $delta->location }}"><a href="{{ route('delta.show', $delta->id) }}">{{ $delta->location }}</a></td>
+                            <td class="table-middle-text table-text" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $delta->location }}"><a href="{{ route('delta.show', $delta->id) }}">{{ $delta->location }}</a></td>
                             <td>{{ $delta->direction->title }}</td>
                             <td>{{ $delta->date }}</td>
                             <td>{{ strtoupper($delta->reliability) }}</td>
-                            <td class="table-long-text" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $delta->content }}">{{ $delta->content }}</td>
-                            <td>
-                                @if($delta->specific == 'p')
-                                Можливе
-                                @elseif($delta->specific == 'i')
-                                Неможливе
-                                @elseif($delta->specific == 'd')
-                                Ускладнене
-                                @endif
-                            </td>
-                            <td>
-                                @if($delta->civil == 1)
-                                Так
-                                @else
-                                Ні
-                                @endif
-                            </td>
-                            <td>
-                                @if($delta->correction == 1)
-                                Так
-                                @else
-                                Ні
-                                @endif
-                            </td>
+                            <td class="table-long-text table-text" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $delta->content }}">{{ $delta->content }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -141,9 +115,6 @@
                         <th>Дата</th>
                         <th>Надійність</th>
                         <th>Опис</th>
-                        <th>Уточнення</th>
-                        <th>Цивільні</th>
-                        <th>Коригування</th>
                     </tr>
                 </tfoot>
             </table>

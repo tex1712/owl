@@ -21,12 +21,19 @@
 }
 
 
-.table-long-text {
+.table-text {
     word-wrap: break-word;
-    max-width: 200px; 
     white-space: nowrap 
     !important;text-overflow: ellipsis;
     overflow: hidden;
+}
+
+.table-middle-text {
+    max-width: 200px; 
+}
+
+.table-long-text {
+    max-width: 350px; 
 }
 
 .buttons-excel {

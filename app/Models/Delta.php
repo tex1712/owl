@@ -24,7 +24,7 @@ class Delta extends Model
 	 * @var array
 	 */
 	protected $fillable = [
-	    'date', 'time', 'location', 'direction_id', 'reliability', 'content', 'specific', 'civil', 'correction', 'coordinates', 'source_id', 'media', 'user_id', 'status', 'result', 'agent_id', 'officer_id', 'tags'
+	    'date', 'time', 'location', 'direction_id', 'reliability', 'content', 'specific', 'civil', 'correction', 'coordinates', 'source_id', 'media', 'user_id', 'status', 'agent_id', 'officer_id', 'tags'
 	];
 
 

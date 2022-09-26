@@ -31,13 +31,6 @@
                         </div>
                         <div class="d-flex flex-wrap">
                             <div class="d-flex align-items-center flex-nowrap">
-                                <p class="mb-0 text-nowrap">
-                                    @if($delta->result)
-                                        <span class="badge bg-success">Відпрацьовано</span>
-                                    @else
-                                        <span class="badge bg-danger">Не відпрацьовано</span>
-                                    @endif
-                                </p>
                                 <p class="mb-0 ms-3 text-nowrap">
                                     @if($delta->status)
                                         <span class="badge bg-success">В роботі</span>
@@ -104,6 +97,8 @@ A<br>
                             @endforeach
                         </p>
                     @endif
+                    <h6 class="mb-0">Джерело:</h6>
+                    <p class="mb-3"><i class="fa-solid fa-user me-2"></i>{{ $delta->source->name }}</p>
                 </div>
             </div>
         </div>

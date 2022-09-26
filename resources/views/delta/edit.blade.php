@@ -101,19 +101,6 @@
                       </div>
                     @endcan
                     <div class="col-md-2">
-                      {{ Form::label('delta-result-yes', 'Обʼєкт відпрацьований?', ['class' => 'form-label']) }}
-                      <div class="form-check">
-                        {{ Form::radio('result', 1, ($delta->result), ['class' => 'form-check-input', 'id' => 'delta-result-yes', 'required' => true]) }}
-                        {{ Form::label('delta-result-yes', 'Так', ['class' => 'form-check-label']) }}
-                      </div>
-                      <div class="form-check mb-3">
-                        {{ Form::radio('result', 0, (!$delta->result), ['class' => 'form-check-input', 'id' => 'delta-result-no', 'required' => true]) }}
-                        {{ Form::label('delta-result-no', 'Ні', ['class' => 'form-check-label']) }}
-                        <div class="invalid-feedback">Необхідно зробити вибір.</div>
-                        <div class="valid-feedback">Виглядає добре!</div>
-                      </div>
-                    </div>
-                    <div class="col-md-2">
                       {{ Form::label('delta-status-yes', 'Обʼєкт в роботі?', ['class' => 'form-label']) }}
                       <div class="form-check">
                         {{ Form::radio('status', 1, ($delta->status), ['class' => 'form-check-input', 'id' => 'delta-status-yes', 'required' => true]) }}

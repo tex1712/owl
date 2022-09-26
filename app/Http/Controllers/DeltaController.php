@@ -28,8 +28,8 @@ class DeltaController extends Controller
                 ->when($request->filled('status'), function ($query) use ($request) {
                     $query->where('status', $request->status);
                 })
-                ->when($request->filled('result'), function ($query) use ($request) {
-                    $query->where('result', $request->result);
+                ->when($request->filled('source_id'), function ($query) use ($request) {
+                    $query->where('source_id', $request->source_id);
                 })
                 ->when($request->filled('tags'), function ($query) use ($request) {
                     $query->withAnyTags($request->input('tags'));
