@@ -2070,8 +2070,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_delete__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/delete */ "./resources/js/components/delete.js");
 /* harmony import */ var _components_copy__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/copy */ "./resources/js/components/copy.js");
 /* harmony import */ var _components_copy__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_components_copy__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _components_form_input_coordinates__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/form-input-coordinates */ "./resources/js/components/form-input-coordinates.js");
+/* harmony import */ var _components_delta_status_switcher__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/delta-status-switcher */ "./resources/js/components/delta-status-switcher.js");
+/* harmony import */ var _components_delta_status_switcher__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_components_delta_status_switcher__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_form_input_coordinates__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/form-input-coordinates */ "./resources/js/components/form-input-coordinates.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
 
 
 
@@ -2081,8 +2084,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 var newcoor = '';
 window.newcoor = newcoor;
-window.CreateCoor = _components_form_input_coordinates__WEBPACK_IMPORTED_MODULE_5__.CreateCoor;
-window.DeleteCoor = _components_form_input_coordinates__WEBPACK_IMPORTED_MODULE_5__.DeleteCoor;
+window.CreateCoor = _components_form_input_coordinates__WEBPACK_IMPORTED_MODULE_6__.CreateCoor;
+window.DeleteCoor = _components_form_input_coordinates__WEBPACK_IMPORTED_MODULE_6__.DeleteCoor;
 
 /***/ }),
 
@@ -2203,6 +2206,38 @@ $(function () {
       if (result.isConfirmed) {
         $('#delete_' + current_id).submit();
       }
+    });
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/delta-status-switcher.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/delta-status-switcher.js ***!
+  \**********************************************************/
+/***/ (() => {
+
+$(function () {
+  "use strict";
+
+  $(document).ready(function () {
+    $('#delta-status-switcher').on('click', function () {
+      var $checked = $(this).is(':checked');
+      var $id = $(this).data('id');
+      var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+      $.ajax({
+        url: "/delta/".concat($id, "/status"),
+        type: 'POST',
+        data: {
+          _token: CSRF_TOKEN,
+          status: $checked,
+          id: $id
+        },
+        dataType: 'JSON',
+        success: function success(data) {//
+        }
+      });
     });
   });
 });

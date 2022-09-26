@@ -5,6 +5,7 @@ import './components/form-select2';
 import './components/form-validation';
 import './components/delete';
 import './components/copy';
+import './components/delta-status-switcher';
 import {CreateCoor, DeleteCoor} from './components/form-input-coordinates';
 
 var newcoor = '';

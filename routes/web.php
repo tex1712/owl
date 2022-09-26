@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth']], function() {
     // Delta
     Route::post('/delta/filter', [DeltaController::class, 'filter'])->name('delta.filter');
     Route::get('/delta/filtered', [DeltaController::class, 'filter'])->name('delta.filtered');
+    Route::post('/delta/{id}/status', [DeltaController::class, 'changeStatus'])->name('delta.change.status');
     Route::resource('/delta', DeltaController::class);
 
     // Users

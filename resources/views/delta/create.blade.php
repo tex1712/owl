@@ -83,10 +83,9 @@
                   <div class="valid-feedback">Виглядає добре!</div>
                 </div>
 
-
-                <h5 class="mb-0 mt-5">Статус @can('admin')| Користувачі @endcan</h5>
-                <hr/>
                 @can('admin')
+                  <h5 class="mb-0 mt-5">Користувачі</h5>
+                  <hr/>
                   <div class="col-md-4">
                     {{ Form::label('agent_id', 'Агент', ['class' => 'form-label']) }}
                     {{ Form::select('agent_id', Delta::getFormData('agents'), null, ['class' => 'single-select-empty', 'required' => true]) }}
@@ -100,21 +99,9 @@
                     <div class="valid-feedback">Виглядає добре!</div>
                   </div>
                 @endcan
-                <div class="col-md-2">
-                  {{ Form::label('delta-status-yes', 'Обʼєкт в роботі?', ['class' => 'form-label']) }}
-                  <div class="form-check">
-                    {{ Form::radio('status', 1, false, ['class' => 'form-check-input', 'id' => 'delta-status-yes', 'required' => true]) }}
-                    {{ Form::label('delta-status-yes', 'Так', ['class' => 'form-check-label']) }}
-                  </div>
-                  <div class="form-check mb-3">
-                    {{ Form::radio('status', 0, true, ['class' => 'form-check-input', 'id' => 'delta-status-no', 'required' => true]) }}
-                    {{ Form::label('delta-status-no', 'Ні', ['class' => 'form-check-label']) }}
-                    <div class="invalid-feedback">Необхідно зробити вибір.</div>
-                    <div class="valid-feedback">Виглядає добре!</div>
-                  </div>
-                </div>
+
                 <div class="col-12">
-                    <h5 class="mb-0">Координати</h5>
+                    <h5 class="mb-0 mt-5">Координати</h5>
                     <hr/>
                     <div class="row gy-3">
                         <div class="col-md-3">

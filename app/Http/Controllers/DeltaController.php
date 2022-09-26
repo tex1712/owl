@@ -159,4 +159,16 @@ class DeltaController extends Controller
         return redirect()->route('delta.index');
     }
 
+
+
+    public function changeStatus(Request $request){
+        $delta = Delta::find($request->input('id'));
+
+        if($delta){
+            $delta->status = boolval(json_decode($request->input('status')));
+            $delta->save();
+        }
+
+    }
+
 }

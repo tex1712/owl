@@ -31,13 +31,10 @@
                         </div>
                         <div class="d-flex flex-wrap">
                             <div class="d-flex align-items-center flex-nowrap">
-                                <p class="mb-0 ms-3 text-nowrap">
-                                    @if($delta->status)
-                                        <span class="badge bg-success">В роботі</span>
-                                    @else
-                                        <span class="badge bg-danger">Не в роботі</span>
-                                    @endif
-                                </p>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="delta-status-switcher" data-id="{{ $delta->id }}" @if($delta->status) checked @endif>
+                                    <label class="form-check-label" for="delta-status-switcher">Статус "В проботі"</label>
+                                  </div>
                             </div>
                         </div>
                     </div>
