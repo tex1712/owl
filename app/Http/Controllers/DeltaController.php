@@ -79,6 +79,7 @@ class DeltaController extends Controller
             $delta->agent_id = \Auth::id();
             $delta->officer_id = \Auth::user()->officer_id;
         }
+        $delta->status = 0;
         $delta->save();
 
         return redirect()->route('delta.show', $delta->id);
