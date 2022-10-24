@@ -211,7 +211,15 @@
                     <img src="https://via.placeholder.com/110X110/212529/fff" alt="" class="rounded-circle" width="54" height="54">
                     <div class="">
                       <h6 class="mb-0 dropdown-user-name">{{ Auth::user()->name }}</h6>
-                      <small class="mb-0 dropdown-user-designation text-secondary">Агент</small>
+                      <small class="mb-0 dropdown-user-designation text-secondary">
+                        @if(Auth::user()->role == 'agent')
+                          Агент
+                        @elseif(Auth::user()->role == 'officer')
+                          Офіцер
+                        @else
+                          Адмін
+                        @endif
+                      </small>
                     </div>
                   </div>
                 </a>

@@ -36,10 +36,12 @@
                             {{ Form::label('filter-agent_id', 'В роботі', ['class' => 'form-label']) }}
                             {{ Form::select('status', [1 => 'Так', 0 => 'Ні'], Request::query('status'), ['class' => (Request::filled('status')) ? 'single-select' : 'single-select-empty']) }}
                         </div>
-                        <div class="col-12 col-lg">
-                            {{ Form::label('filter-source_id', 'Джерело', ['class' => 'form-label']) }}
-                            {{ Form::select('source_id', Delta::getFormData('sources'), Request::query('source_id'), ['class' => (Request::filled('source_id')) ? 'single-select' : 'single-select-empty']) }}
-                        </div>
+                        @canany('admin', 'user')
+                            <div class="col-12 col-lg">
+                                {{ Form::label('filter-source_id', 'Джерело', ['class' => 'form-label']) }}
+                                {{ Form::select('source_id', Delta::getFormData('sources'), Request::query('source_id'), ['class' => (Request::filled('source_id')) ? 'single-select' : 'single-select-empty']) }}
+                            </div>
+                        @endcan
                         <div class="col-12 col-lg">
                             {{ Form::label('tags', 'Теги', ['class' => 'form-label']) }}
                             {{ Form::select('tags[]', Delta::getFormData('tags'), Request::query('tags'), ['multiple' => 'multiple', 'class' => 'multiple-select']) }}
