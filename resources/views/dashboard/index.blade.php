@@ -2,7 +2,7 @@
 
 @section('title', 'Зведення')
 
-@section('content')
+{{-- @section('content')
     <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-5">
       <div class="col">
         <div class="card radius-10">
@@ -777,7 +777,7 @@
         </div>
       </div>
     </div>
-@stop
+@stop --}}
 
 @section('scripts')
     @parent
