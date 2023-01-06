@@ -127,6 +127,9 @@
   <script src="{{ asset('/js/app.js') }}"></script>
 
 
+  {{-- CUSTOM JS --}}
+  @yield('scripts')
+
 
 </body>
 

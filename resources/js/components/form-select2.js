@@ -17,6 +17,14 @@ $(function() {
         minimumResultsForSearch: Infinity
     });
 
+    $('.single-select-not-clear').select2({
+        theme: 'bootstrap4',
+        width: '100%',
+        placeholder: 'Зробіть вибір...',
+        allowClear: false,
+        minimumResultsForSearch: Infinity
+    });
+
     $('.multiple-select').select2({
         theme: 'bootstrap4',
         width: '100%',

@@ -116,7 +116,9 @@ class DeltaController extends Controller
             abort(403);
         }
 
-        return view('delta.edit', compact('delta'));
+        $coordinates = json_decode($delta->coordinates);
+
+        return view('delta.edit', compact('delta', 'coordinates'));
     }
 
     /**
@@ -134,8 +136,7 @@ class DeltaController extends Controller
             abort(403);
         }
 
-        $delta->fill($request->except(['coordinates', 'tags']));
-        $delta->coordinates = json_encode($request->input('coordinates'));
+        $delta->fill($request->except(['tags']));
         $delta->syncTags($request->input('tags'));
         $delta->save();
 

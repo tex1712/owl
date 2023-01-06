@@ -12,9 +12,11 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ])
+    // .postCss('resources/css/app.css', 'public/css', [
+    //     //
+    // ])
+    .sass('resources/sass/app.scss', 'public/css')
+    .sourceMaps()
     .combine([
         'node_modules/sweetalert2/dist/sweetalert2.min.css',
         'node_modules/@fortawesome/fontawesome-free/css/all.min.css',

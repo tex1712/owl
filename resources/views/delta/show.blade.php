@@ -81,9 +81,9 @@ A<br>
                     @if(!is_null(json_decode($delta->coordinates)))
                         <h6 class="mb-0">Координати:</h6>
                         <ul class="mb-3 ps-0 list-group-flush">
-                            @foreach (json_decode($delta->coordinates) as $coordinates)
+                            {{-- @foreach (json_decode($delta->coordinates) as $coordinates)
                                 <li class="ps-0 list-group-item"><i class="fa-solid fa-location-dot me-2"></i><a href class="copy-to-clipboard" data-bs-toggle="tooltip" data-bs-placement="top" title="Копіювати в буфер обміну">{{ $coordinates->long[0] }}</a> | <a href class="copy-to-clipboard" data-bs-toggle="tooltip" data-bs-placement="top" title="Копіювати в буфер обміну">{{ $coordinates->lang[0] }}</a> @if($coordinates->desk[0])<span>- {{ $coordinates->desk[0] }}</span> @endif </li>
-                            @endforeach
+                            @endforeach --}}
                         </ul>
                     @endif
                     @if(!$delta->tags->isEmpty())

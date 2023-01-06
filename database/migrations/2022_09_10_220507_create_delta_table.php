@@ -15,7 +15,7 @@ class CreateDeltaTable extends Migration
     {
         Schema::create('delta', function (Blueprint $table) {
             $table->id();
-            $table->longText('location');
+            $table->longText('location')->nullable();
             $table->foreignId('direction_id')->constrained();
             $table->date('date');
             $table->time('time')->nullable();
