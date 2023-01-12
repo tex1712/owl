@@ -64,11 +64,6 @@
       $coordinates.square.push($coordinates_square);
     });
 
-
     $('#send-coordinates').val(JSON.stringify($coordinates));
-
-
-    console.log($coordinates);
-
 
   }

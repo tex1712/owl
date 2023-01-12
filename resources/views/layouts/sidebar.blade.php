@@ -30,16 +30,14 @@
           <div class="menu-title">Обʼєкти</div>
         </a>
         <ul>
-          <li> <a href="{{ route('delta.index') }}">
+          <li> <a href="{{ route('target.index') }}">
               <i class="bi bi-list"></i>Список обʼєктів
             </a>
           </li>
-          @can('agent')
-            <li> <a href="{{ route('delta.create') }}">
-                <i class="bi bi-plus"></i>Додати новий
-              </a>
-            </li>
-          @endcan
+          <li> <a href="{{ route('target.create') }}">
+              <i class="bi bi-plus"></i>Додати новий
+            </a>
+          </li>
         </ul>
       </li>
       @can('admin')

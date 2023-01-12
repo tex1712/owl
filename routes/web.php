@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DeltaController;
+use App\Http\Controllers\TargetController;
 use App\Http\Controllers\UserController;
 
 
@@ -29,11 +29,11 @@ Route::group(['middleware' => ['auth']], function() {
     // Dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-    // Delta
-    Route::post('/delta/filter', [DeltaController::class, 'filter'])->name('delta.filter');
-    Route::get('/delta/filtered', [DeltaController::class, 'filter'])->name('delta.filtered');
-    Route::post('/delta/{id}/status', [DeltaController::class, 'changeStatus'])->name('delta.change.status');
-    Route::resource('/delta', DeltaController::class);
+    // Target
+    Route::post('/target/filter', [TargetController::class, 'filter'])->name('target.filter');
+    Route::get('/target/filtered', [TargetController::class, 'filter'])->name('target.filtered');
+    Route::post('/target/{id}/status', [TargetController::class, 'changeStatus'])->name('target.change.status');
+    Route::resource('/target', TargetController::class);
 
     // Users
     Route::resource('/users', UserController::class)->middleware('check-users-access');

@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Delta;
+use App\Models\Target;
 
 
-class DeltaController extends Controller
+class TargetController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class DeltaController extends Controller
     public function index(Request $request)
     {
 
-        $deltas = Delta::select("*")
+        $targets = Target::select("*")
                 ->when($request->filled('agent_id'), function ($query) use ($request) {
                     $query->where('agent_id', $request->agent_id);
                 })
@@ -42,7 +42,7 @@ class DeltaController extends Controller
                 })
                 ->get();
 
-        return view('delta.index', compact('deltas'));
+        return view('target.index', compact('targets'));
     }
 
     /**
@@ -52,11 +52,7 @@ class DeltaController extends Controller
      */
     public function create()
     {
-        if (!\Gate::allows('agent')) {
-            abort(403);
-        }
-
-        return view('delta.create');
+        return view('target.create');
     }
 
     /**
@@ -67,22 +63,18 @@ class DeltaController extends Controller
      */
     public function store(Request $request)
     {
-        if (!\Gate::allows('agent')) {
-            abort(403);
-        }
 
-        $delta = new Delta;
-        $delta->fill($request->except(['coordinates']));
-        $delta->coordinates = json_encode($request->input('coordinates'));
-        $delta->user_id = \Auth::id();
+        $target = new Target;
+        $target->fill($request->all());
+        $target->user_id = \Auth::id();
         if(\Auth::user()->isAgent()){
-            $delta->agent_id = \Auth::id();
-            $delta->officer_id = \Auth::user()->officer_id;
+            $target->agent_id = \Auth::id();
         }
-        $delta->status = 0;
-        $delta->save();
+        $target->officer_id = \Users::getOfficerIdByAgentId($target->agent_id);
+        $target->status = 0;
+        $target->save();
 
-        return redirect()->route('delta.show', $delta->id);
+        return redirect()->route('target.show', $target->id);
     }
 
     /**
@@ -93,13 +85,13 @@ class DeltaController extends Controller
      */
     public function show($id)
     {
-        $delta = Delta::find($id);
+        $target = Target::find($id);
 
-        if (!\Gate::allows('delta_view', $delta)) {
+        if (!\Gate::allows('target_access', $target)) {
             abort(403);
         }
         
-        return view('delta.show', compact('delta'));
+        return view('target.show', compact('target'));
     }
 
     /**
@@ -110,15 +102,14 @@ class DeltaController extends Controller
      */
     public function edit($id)
     {
-        $delta = Delta::find($id);
+        $target = Target::find($id);
+        $coordinates = json_decode($target->coordinates);
 
-        if (!\Gate::allows('delta_manage', $delta)) {
+        if (!\Gate::allows('target_access', $target)) {
             abort(403);
         }
 
-        $coordinates = json_decode($delta->coordinates);
-
-        return view('delta.edit', compact('delta', 'coordinates'));
+        return view('target.edit', compact('target', 'coordinates'));
     }
 
     /**
@@ -130,17 +121,17 @@ class DeltaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $delta = Delta::findOrFail($id);
+        $target = Target::findOrFail($id);
 
-        if (!\Gate::allows('delta_manage', $delta)) {
+        if (!\Gate::allows('target_access', $target)) {
             abort(403);
         }
 
-        $delta->fill($request->except(['tags']));
-        $delta->syncTags($request->input('tags'));
-        $delta->save();
+        $target->fill($request->except(['tags']));
+        $target->syncTags($request->input('tags'));
+        $target->save();
 
-        return redirect()->route('delta.show', $delta->id);
+        return redirect()->route('target.show', $target->id);
     }
 
     /**
@@ -151,24 +142,24 @@ class DeltaController extends Controller
      */
     public function destroy($id)
     {
-        $delta = Delta::findOrFail($id);
+        $target = Target::findOrFail($id);
 
-        if (!\Gate::allows('delta_manage', $delta)) {
+        if (!\Gate::allows('target_access', $target)) {
             abort(403);
         }
         
-        $delta->delete();
-        return redirect()->route('delta.index');
+        $target->delete();
+        return redirect()->route('target.index');
     }
 
 
 
     public function changeStatus(Request $request){
-        $delta = Delta::find($request->input('id'));
+        $target = Target::find($request->input('id'));
 
-        if($delta){
-            $delta->status = boolval(json_decode($request->input('status')));
-            $delta->save();
+        if($target){
+            $target->status = boolval(json_decode($request->input('status')));
+            $target->save();
         }
 
     }

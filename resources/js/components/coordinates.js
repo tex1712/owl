@@ -9,7 +9,7 @@ $(function() {
 
     let requiredContent = function(){
       let $is_coordinates = $('#coordinates-wrap .coordinates-block').length === 0;
-      $('#delta-content').attr('required', $is_coordinates);
+      $('#target-content').attr('required', $is_coordinates);
     }
     
     // ADD coordinates block

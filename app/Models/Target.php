@@ -7,13 +7,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Tags\HasTags;
 
-class Delta extends Model
+class Target extends Model
 {
     use HasFactory;
     use SoftDeletes;
 	use HasTags;
-
-	protected $table = 'delta';
 
 	protected $guarded = ['id', 'created_at', 'updated_at'];
 

@@ -24,7 +24,7 @@ class Source extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    public function deltas() {
-        return $this->hasMany('App\Models\Delta');
+    public function targets() {
+        return $this->hasMany('App\Models\Target');
     }
 }

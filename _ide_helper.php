@@ -16068,7 +16068,7 @@
      * 
      *
      */ 
-        class DeltaFacade {
+        class TargetFacade {
                     /**
          * Display a listing of the resource.
          *
@@ -16078,8 +16078,51 @@
          */ 
         public static function getFormData($param)
         {
-                        /** @var \App\Libraries\Delta $instance */
+                        /** @var \App\Libraries\Target $instance */
                         return $instance->getFormData($param);
+        }
+                    /**
+         * Returns Tags list by Target ID.
+         *
+         * @param int $id
+         * @return array 
+         * @static 
+         */ 
+        public static function getTags($id)
+        {
+                        /** @var \App\Libraries\Target $instance */
+                        return $instance->getTags($id);
+        }
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class UsersFacade {
+                    /**
+         * Returns User param by ID.
+         *
+         * @param int $id
+         * @param string $param
+         * @return string 
+         * @static 
+         */ 
+        public static function getUserParamById($id, $param)
+        {
+                        /** @var \App\Libraries\Users $instance */
+                        return $instance->getUserParamById($id, $param);
+        }
+                    /**
+         * Update current user's API Token
+         *
+         * @return null 
+         * @static 
+         */ 
+        public static function updateApiToken()
+        {
+                        /** @var \App\Libraries\Users $instance */
+                        return $instance->updateApiToken();
         }
          
     }
@@ -21055,7 +21098,8 @@ namespace  {
             class URL extends \Illuminate\Support\Facades\URL {}
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
-            class Delta extends \App\Facades\DeltaFacade {}
+            class Target extends \App\Facades\TargetFacade {}
+            class Users extends \App\Facades\UsersFacade {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
             class Form extends \Collective\Html\FormFacade {}
             class Html extends \Collective\Html\HtmlFacade {}

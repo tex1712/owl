@@ -21,8 +21,8 @@ class Direction extends Model
 	 */
 	protected $fillable = ['title'];
 
-    public function deltas() {
-        return $this->hasMany('App\Models\Delta');
+    public function targets() {
+        return $this->hasMany('App\Models\Target');
     }
 
 }

@@ -66,7 +66,7 @@
         </div>
       </div>
 
-      <div class="form-row">
+      <div class="form-row mt-3">
         <textarea name="coordinates-content" class="form-control" class="w-100" minlength="10" ></textarea>
         <div class="invalid-feedback">Опишіть обʼєкт (мінімум 10 символів).</div>
         <div class="valid-feedback">Виглядає добре!</div>

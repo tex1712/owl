@@ -8,6 +8,7 @@
 
   <!-- provide the csrf token -->
   <meta name="csrf-token" content="{{ csrf_token() }}" />
+  <meta name="api-tokem" content="{{ Auth::user()->api_token }}">
 
   <!-- loader-->
   <link href="{{ asset('/theme/css/pace.min.css') }}" rel="stylesheet" />

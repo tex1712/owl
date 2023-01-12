@@ -5,5 +5,6 @@ import './components/form-select2';
 import './components/form-validation';
 import './components/delete';
 import './components/copy';
-import './components/delta-status-switcher';
+import './components/target-status-switcher';
 import './components/coordinates';
+import './components/select2-ajax';

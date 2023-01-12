@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AgentsApiController;
+use App\Http\Controllers\Api\SourcesApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::get('/get-sources/{agent_id}', SourcesApiController::class);
+    Route::get('/get-agents/{officer_id}', AgentsApiController::class);
+});

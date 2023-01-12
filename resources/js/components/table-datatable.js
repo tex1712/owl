@@ -5,8 +5,8 @@ $(function() {
 
 
     $(document).ready(function() {
-        // Delta Table
-        var table = $('#delta-table').DataTable( {
+        // Target Table
+        var table = $('#targets-table').DataTable( {
             lengthChange: true,
             pageLength : 50,
             order: [[3, 'desc']],
@@ -17,7 +17,7 @@ $(function() {
         } );
      
         table.buttons().container()
-            .appendTo( '#delta-table_wrapper .col-md-6:eq(0)' );
+            .appendTo( '#targets-table_wrapper .col-md-6:eq(0)' );
 
         // Users Table
         var table = $('#users-table').DataTable( {

@@ -6,7 +6,7 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 use Illuminate\Support\Facades\Gate;
 
 use App\Models\User;
-use App\Models\Delta;
+use App\Models\Target;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -40,19 +40,46 @@ class AuthServiceProvider extends ServiceProvider
             return ($user->role === 'admin' || $user->role === 'officer');
         });
 
-        Gate::define('delta_view', function(User $user, Delta $delta) {
+        // Defines if User has access to given target
+        Gate::define('target_access', function(User $user, Target $target) {
             if($user->role === 'agent'){
-                return $user->id == $delta->agent_id;
+                return $user->id == $target->agent_id;
             }
             if($user->role === 'officer'){
-                return $user->id == $delta->officer_id;
+                return $user->id == $target->officer_id;
             }
             return $user->role === 'admin';
         });
 
-        Gate::define('delta_manage', function(User $user, Delta $delta) {
+
+        // Defines if any kind of user has access to Agent
+        Gate::define('agent_access', function(User $user, $agent_id){
             if($user->role === 'agent'){
-                return $user->id == $delta->agent_id;
+                return $user->id == $agent_id;
+            }
+            if($user->role === 'officer'){
+                $agent = User::find($agent_id);
+                return $agent->officer_id == $user->id;
+            }
+            return $user->role === 'admin';
+        });
+        
+
+
+        // Defines if Officer has access to Agent
+        Gate::define('officer-to-agent', function(User $user, $agent_id){
+            if($user->role === 'officer'){
+                $agent = User::find($agent_id);
+                return $agent->officer_id == $user->id;
+            }
+            return $user->role === 'admin';
+        });
+
+
+        // Defines if Officer has access to Agent
+        Gate::define('officer-to-officer', function(User $user, $officer_id){
+            if($user->role === 'officer'){
+                return $user->id == $officer_id;
             }
             return $user->role === 'admin';
         });

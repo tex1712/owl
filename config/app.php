@@ -177,8 +177,10 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         // Custom Providers
-        App\Providers\Custom\DeltaProvider::class,
+        App\Providers\Custom\TargetsProvider::class,
         App\Providers\Custom\UsersProvider::class,
+        App\Providers\Custom\SourcesProvider::class,
+        App\Providers\Custom\DirectionsProvider::class,
 
     ],
 
@@ -235,8 +237,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         //Custom Facades
-        'Delta' => App\Facades\DeltaFacade::class,
+        'Targets' => App\Facades\TargetsFacade::class,
         'Users' => App\Facades\UsersFacade::class,
+        'Sources' => App\Facades\SourcesFacade::class,
+        'Directions' => App\Facades\DirectionsFacade::class,
 
     ],
 

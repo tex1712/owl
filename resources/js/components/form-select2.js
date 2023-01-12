@@ -9,12 +9,28 @@ $(function() {
         minimumResultsForSearch: Infinity
     });
 
+    $('.single-select-empty-search').prepend('<option selected></option>').select2({
+        theme: 'bootstrap4',
+        width: '100%',
+        placeholder: 'Зробіть вибір...',
+        allowClear: true,
+        minimumResultsForSearch: true
+    });
+
     $('.single-select').select2({
         theme: 'bootstrap4',
         width: '100%',
         placeholder: 'Зробіть вибір...',
         allowClear: true,
         minimumResultsForSearch: Infinity
+    });
+
+    $('.single-select-search').select2({
+        theme: 'bootstrap4',
+        width: '100%',
+        placeholder: 'Зробіть вибір...',
+        allowClear: true,
+        minimumResultsForSearch: true
     });
 
     $('.single-select-not-clear').select2({

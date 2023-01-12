@@ -4,7 +4,7 @@ namespace App\Providers\Custom;
 
 use Illuminate\Support\ServiceProvider;
 
-class DeltaProvider extends ServiceProvider
+class DirectionsProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -13,8 +13,8 @@ class DeltaProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('delta', function(){
-            return new \App\Libraries\Delta;
+        $this->app->bind('directions', function(){
+            return new \App\Libraries\Directions;
         });
     }
 
